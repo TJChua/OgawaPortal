@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0353A174-B37D-4F4C-9290-1F7B3FB4AD92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OgawaPortal.Module</RootNamespace>
+    <AssemblyName>OgawaPortal.Module</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'EasyTest|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\EasyTest\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;EASYTEST</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.AuditTrail.Xpo.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.ConditionalAppearance.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.ReportsV2.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Security.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Security.Xpo.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Validation.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Web.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.Xpo.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Images.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.Base.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v21.2.Core">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxThemes.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v21.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="mscorlib">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Core">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessObjects\Exchange\ExchangeOut.cs" />
+    <Compile Include="BusinessObjects\Exchange\ExchangeOutDetails.cs" />
+    <Compile Include="BusinessObjects\Exchange\ExchangeOutPayment.cs" />
+    <Compile Include="BusinessObjects\Exchange\PrintGRN.cs" />
+    <Compile Include="BusinessObjects\Exchange\PrintGRNDetails.cs" />
+    <Compile Include="BusinessObjects\Exchange\PrintGRNPayment.cs" />
+    <Compile Include="BusinessObjects\GeneralValue.cs" />
+    <Compile Include="BusinessObjects\Logistic\PickListExchangeDetails.cs" />
+    <Compile Include="BusinessObjects\Logistic\PickListExchangePayment.cs" />
+    <Compile Include="BusinessObjects\Logistic\PickListExhange.cs" />
+    <Compile Include="BusinessObjects\Logistic\PickListFullPayment.cs" />
+    <Compile Include="BusinessObjects\Logistic\PickListFullPaymentAttach.cs" />
+    <Compile Include="BusinessObjects\Logistic\PickListFullPaymentDetails.cs" />
+    <Compile Include="BusinessObjects\Logistic\PickListPartialPayment.cs" />
+    <Compile Include="BusinessObjects\Logistic\PickListPartialPaymentAttach.cs" />
+    <Compile Include="BusinessObjects\Logistic\PickListPartialPaymentDetails.cs" />
+    <Compile Include="BusinessObjects\Maintenances\CancelType.cs" />
+    <Compile Include="BusinessObjects\Maintenances\CardIssuer.cs" />
+    <Compile Include="BusinessObjects\Maintenances\CardMachineBank.cs" />
+    <Compile Include="BusinessObjects\Maintenances\CardType.cs" />
+    <Compile Include="BusinessObjects\Maintenances\CloseType.cs" />
+    <Compile Include="BusinessObjects\Maintenances\Consignment.cs" />
+    <Compile Include="BusinessObjects\Maintenances\Customer.cs" />
+    <Compile Include="BusinessObjects\Maintenances\DeliveryDateControl.cs" />
+    <Compile Include="BusinessObjects\Maintenances\Discount.cs" />
+    <Compile Include="BusinessObjects\Maintenances\DiscountControl.cs" />
+    <Compile Include="BusinessObjects\Maintenances\DiscountType.cs" />
+    <Compile Include="BusinessObjects\Maintenances\ExchangeType.cs" />
+    <Compile Include="BusinessObjects\Maintenances\GSTDates.cs" />
+    <Compile Include="BusinessObjects\Maintenances\Instalment.cs" />
+    <Compile Include="BusinessObjects\Maintenances\Races.cs" />
+    <Compile Include="BusinessObjects\Maintenances\Translate.cs" />
+    <Compile Include="BusinessObjects\Maintenances\Transporter.cs" />
+    <Compile Include="BusinessObjects\Maintenances\Voucher.cs" />
+    <Compile Include="BusinessObjects\Nonpersistent\AddItem.cs" />
+    <Compile Include="BusinessObjects\Nonpersistent\Confirmation.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\ExchangeDeliveryReq.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\ExchangeDeliveryReqDetails.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\ExchangeDeliveryReqPayment.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\FullPaymentDeliveryReq.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\FullPaymentDeliveryReqAttach.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\FullPaymentDeliveryReqDetails.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\FullPaymentDeliveryReqPayment.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\PartialPaymentDeliveryReqPayment.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\PartialPaymentDeliveryReq.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\PartialPaymentDeliveryReqAttach.cs" />
+    <Compile Include="BusinessObjects\POS - Logistic\PartialPaymentDeliveryReqDetails.cs" />
+    <Compile Include="BusinessObjects\POS - Sales\POSSales.cs" />
+    <Compile Include="BusinessObjects\POS - Sales\POSSalesDetails.cs" />
+    <Compile Include="BusinessObjects\POS - Sales\POSSalesPayment.cs" />
+    <Compile Include="BusinessObjects\POS - Transfer\TransferIn.cs" />
+    <Compile Include="BusinessObjects\POS - Transfer\TransferInDetails.cs" />
+    <Compile Include="BusinessObjects\POS - Transfer\TransferOut.cs" />
+    <Compile Include="BusinessObjects\POS - Transfer\TransferOutDetails.cs" />
+    <Compile Include="BusinessObjects\View\vwItemMasters.cs" />
+    <Compile Include="BusinessObjects\View\vwOutlets.cs" />
+    <Compile Include="BusinessObjects\View\vwSalesRep.cs" />
+    <Compile Include="BusinessObjects\View\vwTax.cs" />
+    <Compile Include="BusinessObjects\View\vwWarehouse.cs" />
+    <Compile Include="BusinessObjects\Warehouse\DeliveryOrderFull.cs" />
+    <Compile Include="BusinessObjects\Warehouse\DeliveryOrderFullDetails.cs" />
+    <Compile Include="BusinessObjects\Warehouse\DeliveryOrderPartial.cs" />
+    <Compile Include="BusinessObjects\Warehouse\DeliveryOrderPartialDetails.cs" />
+    <Compile Include="BusinessObjects\Warehouse\PickListTransferIn.cs" />
+    <Compile Include="BusinessObjects\Warehouse\PickListTransferInDetails.cs" />
+    <Compile Include="BusinessObjects\Warehouse\PickListTransferOut.cs" />
+    <Compile Include="BusinessObjects\Warehouse\PickListTransferOutDetails.cs" />
+    <Compile Include="BusinessObjects\Warehouse\TransferPickList.cs" />
+    <Compile Include="BusinessObjects\Warehouse\TransferPickListDetails.cs" />
+    <Compile Include="Controllers\DeliveryOrderFullControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\DeliveryOrderFullControllers.Designer.cs">
+      <DependentUpon>DeliveryOrderFullControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\DeliveryOrderPartialControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\DeliveryOrderPartialControllers.Designer.cs">
+      <DependentUpon>DeliveryOrderPartialControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ExchangeDRControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ExchangeDRControllers.Designer.cs">
+      <DependentUpon>ExchangeDRControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FullPaymentDRControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\FullPaymentDRControllers.Designer.cs">
+      <DependentUpon>FullPaymentDRControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\GeneralControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\GeneralControllers.Designer.cs">
+      <DependentUpon>GeneralControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ListViewControllers.cs" />
+    <Compile Include="Controllers\ListViewControllers.Designer.cs">
+      <DependentUpon>ListViewControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\NavigationControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\NavigationControllers.Designer.cs">
+      <DependentUpon>NavigationControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PartialPaymentDRControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\PartialPaymentDRControllers.Designer.cs">
+      <DependentUpon>PartialPaymentDRControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PickListExchangeControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\PickListExchangeControllers.Designer.cs">
+      <DependentUpon>PickListExchangeControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PickListFullControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\PickListFullControllers.Designer.cs">
+      <DependentUpon>PickListFullControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PickListPartialControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\PickListPartialControllers.Designer.cs">
+      <DependentUpon>PickListPartialControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PickListTransferInControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\PickListTransferInControllers.Designer.cs">
+      <DependentUpon>PickListTransferInControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PickListTransferOutControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\PickListTransferOutControllers.Designer.cs">
+      <DependentUpon>PickListTransferOutControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PrintGRNControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\PrintGRNControllers.Designer.cs">
+      <DependentUpon>PrintGRNControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ResumeBackOrderControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ResumeBackOrderControllers.Designer.cs">
+      <DependentUpon>ResumeBackOrderControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SalesButtonControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\SalesButtonControllers.Designer.cs">
+      <DependentUpon>SalesButtonControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SalesEditOrderControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\SalesEditOrderControllers.Designer.cs">
+      <DependentUpon>SalesEditOrderControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SalesExchangeOutControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\SalesExchangeOutControllers.Designer.cs">
+      <DependentUpon>SalesExchangeOutControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ScreenFilterControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ScreenFilterControllers.Designer.cs">
+      <DependentUpon>ScreenFilterControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TransferInControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\TransferInControllers.Designer.cs">
+      <DependentUpon>TransferInControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TransferOutControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\TransferOutControllers.Designer.cs">
+      <DependentUpon>TransferOutControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TransferPickListControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\TransferPickListControllers.Designer.cs">
+      <DependentUpon>TransferPickListControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseUpdate\Updater.cs" />
+    <Compile Include="BusinessObjects\ApplicationUser.cs" />
+    <Compile Include="BusinessObjects\ApplicationUserLoginInfo.cs" />
+    <Compile Include="Module.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Module.Designer.cs">
+      <DependentUpon>Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controllers\DeliveryOrderFullControllers.resx">
+      <DependentUpon>DeliveryOrderFullControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\DeliveryOrderPartialControllers.resx">
+      <DependentUpon>DeliveryOrderPartialControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ExchangeDRControllers.resx">
+      <DependentUpon>ExchangeDRControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\FullPaymentDRControllers.resx">
+      <DependentUpon>FullPaymentDRControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\PartialPaymentDRControllers.resx">
+      <DependentUpon>PartialPaymentDRControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\PickListExchangeControllers.resx">
+      <DependentUpon>PickListExchangeControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\PickListFullControllers.resx">
+      <DependentUpon>PickListFullControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\PickListPartialControllers.resx">
+      <DependentUpon>PickListPartialControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\PickListTransferInControllers.resx">
+      <DependentUpon>PickListTransferInControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\PickListTransferOutControllers.resx">
+      <DependentUpon>PickListTransferOutControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\PrintGRNControllers.resx">
+      <DependentUpon>PrintGRNControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ResumeBackOrderControllers.resx">
+      <DependentUpon>ResumeBackOrderControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\SalesButtonControllers.resx">
+      <DependentUpon>SalesButtonControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\SalesEditOrderControllers.resx">
+      <DependentUpon>SalesEditOrderControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\SalesExchangeOutControllers.resx">
+      <DependentUpon>SalesExchangeOutControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\TransferInControllers.resx">
+      <DependentUpon>TransferInControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\TransferOutControllers.resx">
+      <DependentUpon>TransferOutControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\TransferPickListControllers.resx">
+      <DependentUpon>TransferPickListControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BusinessObjects\ReadMe.txt" />
+    <None Include="Controllers\ReadMe.txt" />
+    <None Include="DatabaseUpdate\ReadMe.txt" />
+    <None Include="Images\ReadMe.txt" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FunctionalTests\config.xml" />
+    <None Include="FunctionalTests\sample.ets" />
+    <None Include="FunctionalTests\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Welcome.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Security.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Logo.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

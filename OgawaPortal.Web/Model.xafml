@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <SchemaModules>
+    <SchemaModule Name="SystemAspNetModule" Version="21.2.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="21.2.6.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="AuthenticationStandardLogonParameters_DetailView">
+      <Items>
+        <StaticImage Id="LogonImage" ImageName="Security" HorizontalAlign="Center" VerticalAlign="Middle" SizeMode="AutoSize" Caption="LogonImage(4)" />
+        <StaticText Id="LogonText" HorizontalAlign="Center" Caption="LogonText(7)" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="RootGroup" RelativeSize="100" Direction="Vertical">
+            <LayoutGroup Id="EditorsGroup" RelativeSize="100" Index="0">
+              <LayoutGroup Id="Text" Caption="Text(6)" RelativeSize="23.201438848920862">
+                <LayoutItem Id="LogonImage" ViewItem="LogonImage" Index="0" RelativeSize="81.3953488372093" IsNewNode="True" />
+                <LayoutItem Id="LogonText" Index="1" RelativeSize="18.6046511627907" />
+              </LayoutGroup>
+              <LayoutGroup Id="Editors" RelativeSize="76.798561151079141">
+                <LayoutItem Id="UserName" Index="0" RelativeSize="7.02576112412178" />
+                <LayoutItem Id="Password" Index="1" RelativeSize="92.974238875878214" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="ImageGroup" Caption="ImageGroup(3)" RelativeSize="77.7292576419214" Removed="True">
+              <LayoutItem Id="LogonImage" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
