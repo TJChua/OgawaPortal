@@ -34,6 +34,25 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnActivated();
             // Perform various tasks depending on the target View.
+            if (View.Id == "PickListExhange_DetailView")
+            {
+                //this.BackToInquiry.Active.SetItemValue("Enabled", true);
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitExchangePickList.Active.SetItemValue("Enabled", true);
+                    this.CancelExchangePickList.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitExchangePickList.Active.SetItemValue("Enabled", false);
+                    this.CancelExchangePickList.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitExchangePickList.Active.SetItemValue("Enabled", false);
+                this.CancelExchangePickList.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnViewControlsCreated()
         {

@@ -43,6 +43,36 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "PickListFullPayment_DetailView")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitFullPickList.Active.SetItemValue("Enabled", true);
+                    this.CancelFullPickList.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitFullPickList.Active.SetItemValue("Enabled", false);
+                    this.CancelFullPickList.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else if (View.Id == "PickListFullPayment_DetailView_DOFull")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.WarehouseFull.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.WarehouseFull.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitFullPickList.Active.SetItemValue("Enabled", false);
+                this.CancelFullPickList.Active.SetItemValue("Enabled", false);
+                this.WarehouseFull.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {
@@ -153,7 +183,10 @@ namespace OgawaPortal.Module.Controllers
             deliveryfull.DeliveryCountry = selectedObject.DeliveryCountry;
             deliveryfull.DeliveryMobilePhone = selectedObject.DeliveryMobilePhone;
             deliveryfull.DeliveryHomePhone = selectedObject.DeliveryHomePhone;
-            deliveryfull.DeliveryRace = selectedObject.DeliveryRace;
+            if (selectedObject.DeliveryRace != null)
+            {
+                deliveryfull.DeliveryRace = deliveryfull.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
+            }
 
             IObjectSpace fos = Application.CreateObjectSpace();
             FullPaymentDeliveryReq fullpayment = fos.FindObject<FullPaymentDeliveryReq>(new BinaryOperator("BaseNum", selectedObject.SalesOrderNo));

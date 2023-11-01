@@ -40,6 +40,25 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "PartialPaymentDeliveryReq_DetailView")
+            {
+                //this.BackToInquiry.Active.SetItemValue("Enabled", true);
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitPartialPayment.Active.SetItemValue("Enabled", true);
+                    this.CancelPartialPayment.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitPartialPayment.Active.SetItemValue("Enabled", false);
+                    this.CancelPartialPayment.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitPartialPayment.Active.SetItemValue("Enabled", false);
+                this.CancelPartialPayment.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="POSSales_ListView_EditOrder" DetailViewID="POSSales_DetailView_EditOrder" />
+    <ListView Id="POSSales_ListView_ExchangeOut" DetailViewID="POSSales_DetailView_ExchangeOut" />
+    <ListView Id="POSSales_ListView_GRN" DetailViewID="POSSales_DetailView_GRN" />
+    <ListView Id="POSSales_ListView_Logistic" DetailViewID="POSSales_DetailView_Logistic" />
+    <ListView Id="POSSales_ListView_PickListEx" DetailViewID="POSSales_DetailView_PickListEx" />
+    <ListView Id="POSSales_ListView_PickListFull" DetailViewID="POSSales_DetailView_PickListFull" />
+    <ListView Id="POSSales_ListView_PickListPartial" DetailViewID="POSSales_DetailView_PickListPartial" />
+    <ListView Id="POSSales_ListView_RsmBackOrder" DetailViewID="POSSales_DetailView_RsmBackOrder" />
+  </Views>
+</Application>

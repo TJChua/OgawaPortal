@@ -28,14 +28,14 @@ namespace OgawaPortal.Module.BusinessObjects.Logistic
     [Appearance("HideCancel", AppearanceItemType = "Action", TargetItems = "CancelFullPickList", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideWarehouseFull", AppearanceItemType = "Action", TargetItems = "WarehouseFull", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
-    [Appearance("HideWarehouseFullDT", AppearanceItemType = "Action", TargetItems = "WarehouseFull", Context = "PickListFullPayment_PLFP_DetailView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    [Appearance("HideWarehouseFullDT", AppearanceItemType = "Action", TargetItems = "WarehouseFull", Context = "PickListFullPayment_DetailView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
     [Appearance("HideSubmit2", AppearanceItemType = "Action", TargetItems = "SubmitFullPickList", Criteria = "not (Status in (0))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideCancel2", AppearanceItemType = "Action", TargetItems = "CancelFullPickList", Criteria = "not (Status in (0))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
     // Delivery Order Full
-    [Appearance("HideSubmit3", AppearanceItemType = "Action", TargetItems = "SubmitFullPickList", Context = "PickListFullPayment_PLFP_DetailView_DOFull", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
-    [Appearance("HideCancel3", AppearanceItemType = "Action", TargetItems = "CancelFullPickList", Context = "PickListFullPayment_PLFP_DetailView_DOFull", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    [Appearance("HideSubmit3", AppearanceItemType = "Action", TargetItems = "SubmitFullPickList", Context = "PickListFullPayment_DetailView_DOFull", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    [Appearance("HideCancel3", AppearanceItemType = "Action", TargetItems = "CancelFullPickList", Context = "PickListFullPayment_DetailView_DOFull", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
     public class PickListFullPayment : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).

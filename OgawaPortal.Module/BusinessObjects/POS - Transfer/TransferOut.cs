@@ -22,8 +22,8 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Transfer
     [DefaultProperty("DocNum")]
     [Appearance("HideDelete", AppearanceItemType = "Action", TargetItems = "Delete", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
-    [Appearance("HideNew", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "TransferOut_ListView_TINS")]
-    [Appearance("HideAddItemTransfer", AppearanceItemType.Action, "True", TargetItems = "AddItemTransfer", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "TransferOut_ListView_TINS")]
+    [Appearance("HideNew", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "TransferOut_ListView")]
+    [Appearance("HideAddItemTransfer", AppearanceItemType.Action, "True", TargetItems = "AddItemTransfer", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "TransferOut_ListView")]
 
     [Appearance("HideSubmit", AppearanceItemType = "Action", TargetItems = "SubmitTransfer", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideCancel", AppearanceItemType = "Action", TargetItems = "CancelTransfer", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]

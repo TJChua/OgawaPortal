@@ -42,6 +42,46 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "TransferPickList_DetailView")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitTransferPickList.Active.SetItemValue("Enabled", true);
+                    this.CancelTransferPickList.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitTransferPickList.Active.SetItemValue("Enabled", false);
+                    this.CancelTransferPickList.Active.SetItemValue("Enabled", false);
+                }
+
+                if (((DetailView)View).ViewEditMode == ViewEditMode.Edit)
+                {
+                    this.AddItemTransferPickList.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.AddItemTransferPickList.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else if (View.Id == "TransferPickList_DetailView_TransferOut")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.TransferOutPickList.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.TransferOutPickList.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitTransferPickList.Active.SetItemValue("Enabled", false);
+                this.CancelTransferPickList.Active.SetItemValue("Enabled", false);
+                this.AddItemTransferPickList.Active.SetItemValue("Enabled", false);
+                this.TransferOutPickList.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {

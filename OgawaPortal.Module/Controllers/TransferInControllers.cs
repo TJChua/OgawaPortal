@@ -39,6 +39,21 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "TransferIn_DetailView")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitTransferIn.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitTransferIn.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitTransferIn.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {

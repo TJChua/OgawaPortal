@@ -39,6 +39,24 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "PrintGRN_DetailView")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitSalesGRN.Active.SetItemValue("Enabled", true);
+                    this.CancelSalesGRN.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitSalesGRN.Active.SetItemValue("Enabled", false);
+                    this.CancelSalesGRN.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitSalesGRN.Active.SetItemValue("Enabled", false);
+                this.CancelSalesGRN.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {

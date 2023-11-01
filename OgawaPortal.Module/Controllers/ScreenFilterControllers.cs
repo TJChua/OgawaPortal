@@ -64,12 +64,15 @@ namespace OgawaPortal.Module.Controllers
                 {
                     if (user.Outlet != null)
                     {
-                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status != ? and CreateUser.Outlet.CardCode = ?",
-                            Status.Posted, user.Outlet.CardCode);
+                        //((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ? and CreateUser.Outlet.CardCode = ?",
+                        //    Status.Posted, user.Outlet.CardCode);
+                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ? and CreateUser.Outlet.CardCode = ?",
+                            Status.Submit, user.Outlet.CardCode);
                     }
                     else
                     {
-                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status != ?", Status.Posted);
+                        //((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ?", Status.Posted);
+                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ?", Status.Submit);
                     }
                 }
 
@@ -77,12 +80,15 @@ namespace OgawaPortal.Module.Controllers
                 {
                     if (user.Outlet != null)
                     {
-                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status != ? and CreateUser.Outlet.CardCode = ?",
-                            Status.Posted, user.Outlet.CardCode);
+                        //((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ? and CreateUser.Outlet.CardCode = ?",
+                        //    Status.Posted, user.Outlet.CardCode);
+                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ? and CreateUser.Outlet.CardCode = ?",
+                            Status.Submit, user.Outlet.CardCode);
                     }
                     else
                     {
-                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status != ?", Status.Posted);
+                        //((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ?", Status.Posted);
+                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ?", Status.Submit);
                     }
                 }
 
@@ -90,13 +96,17 @@ namespace OgawaPortal.Module.Controllers
                 {
                     if (user.Outlet != null)
                     {
+                        //((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status in (?) and CreateUser.Outlet.CardCode = ?",
+                        //    Status.Posted, user.Outlet.CardCode);
                         ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status in (?) and CreateUser.Outlet.CardCode = ?",
-                            Status.Posted, user.Outlet.CardCode);
+                            Status.Submit, user.Outlet.CardCode);
                     }
                     else
                     {
-                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status in (?, ?)",
-                            Status.Posted);
+                        //((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status in (?)",
+                        //    Status.Posted);
+                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status in (?)",
+                            Status.Submit);
                     }
                 }
 
@@ -104,12 +114,15 @@ namespace OgawaPortal.Module.Controllers
                 {
                     if (user.Outlet != null)
                     {
+                        //((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ? and CreateUser.Outlet.CardCode = ?",
+                        //    Status.Posted, user.Outlet.CardCode);
                         ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ? and CreateUser.Outlet.CardCode = ?",
-                            Status.Posted, user.Outlet.CardCode);
+                            Status.Submit, user.Outlet.CardCode);
                     }
                     else
                     {
-                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ?", Status.Posted);
+                        //((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ?", Status.Posted);
+                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status = ?", Status.Submit);
                     }
                 }
 

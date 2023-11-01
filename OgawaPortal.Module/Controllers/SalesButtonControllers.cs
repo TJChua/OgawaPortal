@@ -433,7 +433,10 @@ namespace OgawaPortal.Module.Controllers
             goodreturn.BillHomePhone = selectedObject.BillHomePhone;
             goodreturn.BillEmail = selectedObject.BillEmail;
             goodreturn.BillIdentityNo = selectedObject.BillIdentityNo;
-            goodreturn.BillRace = selectedObject.BillRace;
+            if (selectedObject.BillRace != null)
+            {
+                goodreturn.BillRace = goodreturn.Session.GetObjectByKey<Races>(selectedObject.BillRace.Oid);
+            }
 
             if (selectedObject.DeliveryContact != null)
             {
@@ -447,7 +450,10 @@ namespace OgawaPortal.Module.Controllers
             goodreturn.DeliveryCountry = selectedObject.DeliveryCountry;
             goodreturn.DeliveryMobilePhone = selectedObject.DeliveryMobilePhone;
             goodreturn.DeliveryHomePhone = selectedObject.DeliveryHomePhone;
-            goodreturn.DeliveryRace = selectedObject.DeliveryRace;
+            if (selectedObject.DeliveryRace != null)
+            {
+                goodreturn.DeliveryRace = goodreturn.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
+            }
 
             goodreturn.SubTotal = selectedObject.SubTotal;
             goodreturn.OrderDiscount = selectedObject.OrderDiscount;
@@ -482,25 +488,46 @@ namespace OgawaPortal.Module.Controllers
                 PrintGRNPayment grnpayment = os.CreateObject<PrintGRNPayment>();
                 grnpayment.PaymentMethod = dtl2.PaymentMethod;
                 grnpayment.CashAcctCode = dtl2.CashAcctCode;
-                grnpayment.Consignment = dtl2.Consignment;
+                if (dtl2.Consignment != null)
+                {
+                    grnpayment.Consignment = grnpayment.Session.GetObjectByKey<Consignment>(dtl2.Consignment.Oid);
+                }
                 grnpayment.CashAmount = dtl2.CashAmount;
                 grnpayment.CashRefNum = dtl2.CashRefNum;
                 grnpayment.CreditCardAcctCode = dtl2.CreditCardAcctCode;
-                grnpayment.CardType = dtl2.CardType;
+                if (dtl2.CardType != null)
+                {
+                    grnpayment.CardType = grnpayment.Session.GetObjectByKey<CardType>(dtl2.CardType.Oid);
+                }
                 grnpayment.CreditCardNo = dtl2.CreditCardNo;
                 grnpayment.CardHolderName = dtl2.CardHolderName;
-                grnpayment.Instalment = dtl2.Instalment;
+                if (dtl2.Instalment != null)
+                {
+                    grnpayment.Instalment = grnpayment.Session.GetObjectByKey<Instalment>(dtl2.Instalment.Oid);
+                }
                 grnpayment.TerminalID = dtl2.TerminalID;
-                grnpayment.CardIssuer = dtl2.CardIssuer;
-                grnpayment.Merchant = dtl2.Merchant;
+                if (dtl2.CardIssuer != null)
+                {
+                    grnpayment.CardIssuer = grnpayment.Session.GetObjectByKey<CardIssuer>(dtl2.CardIssuer.Oid);
+                }
+                if (dtl2.Merchant != null)
+                {
+                    grnpayment.Merchant = grnpayment.Session.GetObjectByKey<CardMachineBank>(dtl2.Merchant.Oid);
+                }
                 grnpayment.ApprovalCode = dtl2.ApprovalCode;
                 grnpayment.BatchNo = dtl2.BatchNo;
                 grnpayment.Transaction = dtl2.Transaction;
                 grnpayment.CreditCardAmount = dtl2.CreditCardAmount;
                 grnpayment.VoucherAcctCode = dtl2.VoucherAcctCode;
-                grnpayment.VoucherType = dtl2.VoucherType;
+                if (dtl2.VoucherType != null)
+                {
+                    grnpayment.VoucherType = grnpayment.Session.GetObjectByKey<Voucher>(dtl2.VoucherType.Oid);
+                }
                 grnpayment.VoucherNo = dtl2.VoucherNo;
-                grnpayment.TaxCode = dtl2.TaxCode;
+                if (dtl2.TaxCode != null)
+                {
+                    grnpayment.TaxCode = grnpayment.Session.GetObjectByKey<vwTax>(dtl2.TaxCode.Code);
+                }
                 grnpayment.VoucherAmount = dtl2.VoucherAmount;
                 grnpayment.PaymentTotal = dtl2.PaymentTotal;
                 goodreturn.PaymentDetailsBO.Add(grnpayment);
@@ -551,7 +578,10 @@ namespace OgawaPortal.Module.Controllers
             exchangeout.BillHomePhone = selectedObject.BillHomePhone;
             exchangeout.BillEmail = selectedObject.BillEmail;
             exchangeout.BillIdentityNo = selectedObject.BillIdentityNo;
-            exchangeout.BillRace = selectedObject.BillRace;
+            if (selectedObject.BillRace != null)
+            {
+                exchangeout.BillRace = exchangeout.Session.GetObjectByKey<Races>(selectedObject.BillRace.Oid);
+            }
 
             if (selectedObject.DeliveryContact != null)
             {
@@ -565,7 +595,10 @@ namespace OgawaPortal.Module.Controllers
             exchangeout.DeliveryCountry = selectedObject.DeliveryCountry;
             exchangeout.DeliveryMobilePhone = selectedObject.DeliveryMobilePhone;
             exchangeout.DeliveryHomePhone = selectedObject.DeliveryHomePhone;
-            exchangeout.DeliveryRace = selectedObject.DeliveryRace;
+            if (selectedObject.DeliveryRace != null)
+            {
+                exchangeout.DeliveryRace = exchangeout.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
+            }
 
             exchangeout.SubTotal = selectedObject.SubTotal;
             exchangeout.OrderDiscount = selectedObject.OrderDiscount;
@@ -600,25 +633,46 @@ namespace OgawaPortal.Module.Controllers
                 ExchangeOutPayment exchangepayment = os.CreateObject<ExchangeOutPayment>();
                 exchangepayment.PaymentMethod = dtl2.PaymentMethod;
                 exchangepayment.CashAcctCode = dtl2.CashAcctCode;
-                exchangepayment.Consignment = dtl2.Consignment;
+                if (dtl2.Consignment != null)
+                {
+                    exchangepayment.Consignment = exchangepayment.Session.GetObjectByKey<Consignment>(dtl2.Consignment.Oid);
+                }
                 exchangepayment.CashAmount = dtl2.CashAmount;
                 exchangepayment.CashRefNum = dtl2.CashRefNum;
                 exchangepayment.CreditCardAcctCode = dtl2.CreditCardAcctCode;
-                exchangepayment.CardType = dtl2.CardType;
+                if (dtl2.CardType != null)
+                {
+                    exchangepayment.CardType = exchangepayment.Session.GetObjectByKey<CardType>(dtl2.CardType.Oid);
+                }
                 exchangepayment.CreditCardNo = dtl2.CreditCardNo;
                 exchangepayment.CardHolderName = dtl2.CardHolderName;
-                exchangepayment.Instalment = dtl2.Instalment;
+                if (dtl2.Instalment != null)
+                {
+                    exchangepayment.Instalment = exchangepayment.Session.GetObjectByKey<Instalment>(dtl2.Instalment.Oid);
+                }
                 exchangepayment.TerminalID = dtl2.TerminalID;
-                exchangepayment.CardIssuer = dtl2.CardIssuer;
-                exchangepayment.Merchant = dtl2.Merchant;
+                if (dtl2.CardIssuer != null)
+                {
+                    exchangepayment.CardIssuer = exchangepayment.Session.GetObjectByKey<CardIssuer>(dtl2.CardIssuer.Oid);
+                }
+                if (dtl2.Merchant != null)
+                {
+                    exchangepayment.Merchant = exchangepayment.Session.GetObjectByKey<CardMachineBank>(dtl2.Merchant.Oid);
+                }
                 exchangepayment.ApprovalCode = dtl2.ApprovalCode;
                 exchangepayment.BatchNo = dtl2.BatchNo;
                 exchangepayment.Transaction = dtl2.Transaction;
                 exchangepayment.CreditCardAmount = dtl2.CreditCardAmount;
                 exchangepayment.VoucherAcctCode = dtl2.VoucherAcctCode;
-                exchangepayment.VoucherType = dtl2.VoucherType;
+                if (dtl2.VoucherType != null)
+                {
+                    exchangepayment.VoucherType = exchangepayment.Session.GetObjectByKey<Voucher>(dtl2.VoucherType.Oid);
+                }
                 exchangepayment.VoucherNo = dtl2.VoucherNo;
-                exchangepayment.TaxCode = dtl2.TaxCode;
+                if (dtl2.TaxCode != null)
+                {
+                    exchangepayment.TaxCode = exchangepayment.Session.GetObjectByKey<vwTax>(dtl2.TaxCode.Code);
+                }
                 exchangepayment.VoucherAmount = dtl2.VoucherAmount;
                 exchangepayment.PaymentTotal = dtl2.PaymentTotal;
                 exchangeout.PaymentDetailsBO.Add(exchangepayment);
@@ -669,7 +723,10 @@ namespace OgawaPortal.Module.Controllers
             fullpayment.BillHomePhone = selectedObject.BillHomePhone;
             fullpayment.BillEmail = selectedObject.BillEmail;
             fullpayment.BillIdentityNo = selectedObject.BillIdentityNo;
-            fullpayment.BillRace = selectedObject.BillRace;
+            if (selectedObject.BillRace != null)
+            {
+                fullpayment.BillRace = fullpayment.Session.GetObjectByKey<Races>(selectedObject.BillRace.Oid);
+            }
 
             if (selectedObject.DeliveryContact != null)
             {
@@ -683,7 +740,10 @@ namespace OgawaPortal.Module.Controllers
             fullpayment.DeliveryCountry = selectedObject.DeliveryCountry;
             fullpayment.DeliveryMobilePhone = selectedObject.DeliveryMobilePhone;
             fullpayment.DeliveryHomePhone = selectedObject.DeliveryHomePhone;
-            fullpayment.DeliveryRace = selectedObject.DeliveryRace;
+            if (selectedObject.DeliveryRace != null)
+            {
+                fullpayment.DeliveryRace = fullpayment.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
+            }
 
             fullpayment.SubTotal = selectedObject.SubTotal;
             fullpayment.OrderDiscount = selectedObject.OrderDiscount;
@@ -718,25 +778,46 @@ namespace OgawaPortal.Module.Controllers
                 FullPaymentDeliveryReqPayment salespayment = os.CreateObject<FullPaymentDeliveryReqPayment>();
                 salespayment.PaymentMethod = dtl2.PaymentMethod;
                 salespayment.CashAcctCode = dtl2.CashAcctCode;
-                salespayment.Consignment = dtl2.Consignment;
+                if (dtl2.Consignment != null)
+                {
+                    salespayment.Consignment = salespayment.Session.GetObjectByKey<Consignment>(dtl2.Consignment.Oid);
+                }
                 salespayment.CashAmount = dtl2.CashAmount;
                 salespayment.CashRefNum = dtl2.CashRefNum;
                 salespayment.CreditCardAcctCode = dtl2.CreditCardAcctCode;
-                salespayment.CardType = dtl2.CardType;
+                if (dtl2.CardType != null)
+                {
+                    salespayment.CardType = salespayment.Session.GetObjectByKey<CardType>(dtl2.CardType.Oid);
+                }
                 salespayment.CreditCardNo = dtl2.CreditCardNo;
                 salespayment.CardHolderName = dtl2.CardHolderName;
-                salespayment.Instalment = dtl2.Instalment;
+                if (dtl2.Instalment != null)
+                {
+                    salespayment.Instalment = salespayment.Session.GetObjectByKey<Instalment>(dtl2.Instalment.Oid);
+                }
                 salespayment.TerminalID = dtl2.TerminalID;
-                salespayment.CardIssuer = dtl2.CardIssuer;
-                salespayment.Merchant = dtl2.Merchant;
+                if (dtl2.CardIssuer != null)
+                {
+                    salespayment.CardIssuer = salespayment.Session.GetObjectByKey<CardIssuer>(dtl2.CardIssuer.Oid);
+                }
+                if (dtl2.Merchant != null)
+                {
+                    salespayment.Merchant = salespayment.Session.GetObjectByKey<CardMachineBank>(dtl2.Merchant.Oid);
+                }
                 salespayment.ApprovalCode = dtl2.ApprovalCode;
                 salespayment.BatchNo = dtl2.BatchNo;
                 salespayment.Transaction = dtl2.Transaction;
                 salespayment.CreditCardAmount = dtl2.CreditCardAmount;
                 salespayment.VoucherAcctCode = dtl2.VoucherAcctCode;
-                salespayment.VoucherType = dtl2.VoucherType;
+                if (dtl2.VoucherType != null)
+                {
+                    salespayment.VoucherType = salespayment.Session.GetObjectByKey<Voucher>(dtl2.VoucherType.Oid);
+                }
                 salespayment.VoucherNo = dtl2.VoucherNo;
-                salespayment.TaxCode = dtl2.TaxCode;
+                if (dtl2.TaxCode != null)
+                {
+                    salespayment.TaxCode = salespayment.Session.GetObjectByKey<vwTax>(dtl2.TaxCode.Code);
+                }
                 salespayment.VoucherAmount = dtl2.VoucherAmount;
                 salespayment.PaymentTotal = dtl2.PaymentTotal;
                 fullpayment.PaymentDetailsBO.Add(salespayment);
@@ -787,7 +868,10 @@ namespace OgawaPortal.Module.Controllers
             partialpayment.BillHomePhone = selectedObject.BillHomePhone;
             partialpayment.BillEmail = selectedObject.BillEmail;
             partialpayment.BillIdentityNo = selectedObject.BillIdentityNo;
-            partialpayment.BillRace = selectedObject.BillRace;
+            if (selectedObject.BillRace != null)
+            {
+                partialpayment.BillRace = partialpayment.Session.GetObjectByKey<Races>(selectedObject.BillRace.Oid);
+            }
 
             if (selectedObject.DeliveryContact != null)
             {
@@ -801,7 +885,10 @@ namespace OgawaPortal.Module.Controllers
             partialpayment.DeliveryCountry = selectedObject.DeliveryCountry;
             partialpayment.DeliveryMobilePhone = selectedObject.DeliveryMobilePhone;
             partialpayment.DeliveryHomePhone = selectedObject.DeliveryHomePhone;
-            partialpayment.DeliveryRace = selectedObject.DeliveryRace;
+            if (selectedObject.DeliveryRace != null)
+            {
+                partialpayment.DeliveryRace = partialpayment.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
+            }
 
             partialpayment.SubTotal = selectedObject.SubTotal;
             partialpayment.OrderDiscount = selectedObject.OrderDiscount;
@@ -836,25 +923,46 @@ namespace OgawaPortal.Module.Controllers
                 PartialPaymentDeliveryReqPayment salespayment = os.CreateObject<PartialPaymentDeliveryReqPayment>();
                 salespayment.PaymentMethod = dtl2.PaymentMethod;
                 salespayment.CashAcctCode = dtl2.CashAcctCode;
-                salespayment.Consignment = dtl2.Consignment;
+                if (dtl2.Consignment != null)
+                {
+                    salespayment.Consignment = partialpayment.Session.GetObjectByKey<Consignment>(dtl2.Consignment.Oid);
+                }    
                 salespayment.CashAmount = dtl2.CashAmount;
                 salespayment.CashRefNum = dtl2.CashRefNum;
                 salespayment.CreditCardAcctCode = dtl2.CreditCardAcctCode;
-                salespayment.CardType = dtl2.CardType;
+                if (dtl2.CardType != null)
+                {
+                    salespayment.CardType = partialpayment.Session.GetObjectByKey<CardType>(dtl2.CardType.Oid);
+                }
                 salespayment.CreditCardNo = dtl2.CreditCardNo;
                 salespayment.CardHolderName = dtl2.CardHolderName;
-                salespayment.Instalment = dtl2.Instalment;
+                if (dtl2.Instalment != null)
+                {
+                    salespayment.Instalment = partialpayment.Session.GetObjectByKey<Instalment>(dtl2.Instalment.Oid);
+                }
                 salespayment.TerminalID = dtl2.TerminalID;
-                salespayment.CardIssuer = dtl2.CardIssuer;
-                salespayment.Merchant = dtl2.Merchant;
+                if (dtl2.CardIssuer != null)
+                {
+                    salespayment.CardIssuer = partialpayment.Session.GetObjectByKey<CardIssuer>(dtl2.CardIssuer.Oid);
+                }
+                if (dtl2.Merchant != null)
+                {
+                    salespayment.Merchant = partialpayment.Session.GetObjectByKey<CardMachineBank>(dtl2.Merchant.Oid);
+                }
                 salespayment.ApprovalCode = dtl2.ApprovalCode;
                 salespayment.BatchNo = dtl2.BatchNo;
                 salespayment.Transaction = dtl2.Transaction;
                 salespayment.CreditCardAmount = dtl2.CreditCardAmount;
                 salespayment.VoucherAcctCode = dtl2.VoucherAcctCode;
-                salespayment.VoucherType = dtl2.VoucherType;
+                if (dtl2.VoucherType != null)
+                {
+                    salespayment.VoucherType = partialpayment.Session.GetObjectByKey<Voucher>(dtl2.VoucherType.Oid);
+                }
                 salespayment.VoucherNo = dtl2.VoucherNo;
-                salespayment.TaxCode = dtl2.TaxCode;
+                if (dtl2.TaxCode != null)
+                {
+                    salespayment.TaxCode = partialpayment.Session.GetObjectByKey<vwTax>(dtl2.TaxCode.Code);
+                }
                 salespayment.VoucherAmount = dtl2.VoucherAmount;
                 salespayment.PaymentTotal = dtl2.PaymentTotal;
                 partialpayment.PaymentDetailsBO.Add(salespayment);
@@ -907,7 +1015,10 @@ namespace OgawaPortal.Module.Controllers
             exchangedr.BillHomePhone = selectedObject.BillHomePhone;
             exchangedr.BillEmail = selectedObject.BillEmail;
             exchangedr.BillIdentityNo = selectedObject.BillIdentityNo;
-            exchangedr.BillRace = selectedObject.BillRace;
+            if (selectedObject.BillRace != null)
+            {
+                exchangedr.BillRace = exchangedr.Session.GetObjectByKey<Races>(selectedObject.BillRace.Oid);
+            }
 
             if (selectedObject.DeliveryContact != null)
             {
@@ -921,7 +1032,10 @@ namespace OgawaPortal.Module.Controllers
             exchangedr.DeliveryCountry = selectedObject.DeliveryCountry;
             exchangedr.DeliveryMobilePhone = selectedObject.DeliveryMobilePhone;
             exchangedr.DeliveryHomePhone = selectedObject.DeliveryHomePhone;
-            exchangedr.DeliveryRace = selectedObject.DeliveryRace;
+            if (selectedObject.DeliveryRace != null)
+            {
+                exchangedr.DeliveryRace = exchangedr.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
+            }
 
             exchangedr.SubTotal = selectedObject.SubTotal;
             exchangedr.OrderDiscount = selectedObject.OrderDiscount;
@@ -956,25 +1070,46 @@ namespace OgawaPortal.Module.Controllers
                 ExchangeDeliveryReqPayment salespayment = os.CreateObject<ExchangeDeliveryReqPayment>();
                 salespayment.PaymentMethod = dtl2.PaymentMethod;
                 salespayment.CashAcctCode = dtl2.CashAcctCode;
-                salespayment.Consignment = dtl2.Consignment;
+                if (dtl2.Consignment != null)
+                {
+                    salespayment.Consignment = exchangedr.Session.GetObjectByKey<Consignment>(dtl2.Consignment.Oid);
+                }
                 salespayment.CashAmount = dtl2.CashAmount;
                 salespayment.CashRefNum = dtl2.CashRefNum;
                 salespayment.CreditCardAcctCode = dtl2.CreditCardAcctCode;
-                salespayment.CardType = dtl2.CardType;
+                if (dtl2.CardType != null)
+                {
+                    salespayment.CardType = exchangedr.Session.GetObjectByKey<CardType>(dtl2.CardType.Oid);
+                }
                 salespayment.CreditCardNo = dtl2.CreditCardNo;
                 salespayment.CardHolderName = dtl2.CardHolderName;
-                salespayment.Instalment = dtl2.Instalment;
+                if (dtl2.Instalment != null)
+                {
+                    salespayment.Instalment = exchangedr.Session.GetObjectByKey<Instalment>(dtl2.Instalment.Oid);
+                }
                 salespayment.TerminalID = dtl2.TerminalID;
-                salespayment.CardIssuer = dtl2.CardIssuer;
-                salespayment.Merchant = dtl2.Merchant;
+                if (dtl2.CardIssuer != null)
+                {
+                    salespayment.CardIssuer = exchangedr.Session.GetObjectByKey<CardIssuer>(dtl2.CardIssuer.Oid);
+                }
+                if (dtl2.Merchant != null)
+                {
+                    salespayment.Merchant = exchangedr.Session.GetObjectByKey<CardMachineBank>(dtl2.Merchant.Oid);
+                }
                 salespayment.ApprovalCode = dtl2.ApprovalCode;
                 salespayment.BatchNo = dtl2.BatchNo;
                 salespayment.Transaction = dtl2.Transaction;
                 salespayment.CreditCardAmount = dtl2.CreditCardAmount;
                 salespayment.VoucherAcctCode = dtl2.VoucherAcctCode;
-                salespayment.VoucherType = dtl2.VoucherType;
+                if (dtl2.VoucherType != null)
+                {
+                    salespayment.VoucherType = exchangedr.Session.GetObjectByKey<Voucher>(dtl2.VoucherType.Oid);
+                }
                 salespayment.VoucherNo = dtl2.VoucherNo;
-                salespayment.TaxCode = dtl2.TaxCode;
+                if (dtl2.TaxCode != null)
+                {
+                    salespayment.TaxCode = exchangedr.Session.GetObjectByKey<vwTax>(dtl2.TaxCode.Code);
+                }
                 salespayment.VoucherAmount = dtl2.VoucherAmount;
                 salespayment.PaymentTotal = dtl2.PaymentTotal;
                 exchangedr.PaymentDetailsBO.Add(salespayment);
@@ -1023,7 +1158,10 @@ namespace OgawaPortal.Module.Controllers
             pickfullpayment.DeliveryCountry = selectedObject.DeliveryCountry;
             pickfullpayment.DeliveryMobilePhone = selectedObject.DeliveryMobilePhone;
             pickfullpayment.DeliveryHomePhone = selectedObject.DeliveryHomePhone;
-            pickfullpayment.DeliveryRace = selectedObject.DeliveryRace;
+            if (selectedObject.DeliveryRace != null)
+            {
+                pickfullpayment.DeliveryRace = pickfullpayment.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
+            }
 
             IObjectSpace fos = Application.CreateObjectSpace();
             FullPaymentDeliveryReq fullpayment = fos.FindObject<FullPaymentDeliveryReq>(new BinaryOperator("DocNum", selectedObject.DocNum));
@@ -1099,7 +1237,10 @@ namespace OgawaPortal.Module.Controllers
             pickpartialpayment.DeliveryCountry = selectedObject.DeliveryCountry;
             pickpartialpayment.DeliveryMobilePhone = selectedObject.DeliveryMobilePhone;
             pickpartialpayment.DeliveryHomePhone = selectedObject.DeliveryHomePhone;
-            pickpartialpayment.DeliveryRace = selectedObject.DeliveryRace;
+            if (selectedObject.DeliveryRace != null)
+            {
+                pickpartialpayment.DeliveryRace = pickpartialpayment.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
+            }
 
             pickpartialpayment.OrderBalanceDue = selectedObject.OrderBalanceDue;
             pickpartialpayment.NetTotalDue = selectedObject.NetTotalDue;
@@ -1182,7 +1323,10 @@ namespace OgawaPortal.Module.Controllers
             pickexchange.DeliveryCountry = selectedObject.DeliveryCountry;
             pickexchange.DeliveryMobilePhone = selectedObject.DeliveryMobilePhone;
             pickexchange.DeliveryHomePhone = selectedObject.DeliveryHomePhone;
-            pickexchange.DeliveryRace = selectedObject.DeliveryRace;
+            if (selectedObject.DeliveryRace != null)
+            {
+                pickexchange.DeliveryRace = pickexchange.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
+            }
 
             pickexchange.OrderBalanceDue = selectedObject.OrderBalanceDue;
             pickexchange.NetTotalDue = selectedObject.NetTotalDue;
@@ -1225,25 +1369,46 @@ namespace OgawaPortal.Module.Controllers
                 PickListExchangePayment salespayment = os.CreateObject<PickListExchangePayment>();
                 salespayment.PaymentMethod = dtl2.PaymentMethod;
                 salespayment.CashAcctCode = dtl2.CashAcctCode;
-                salespayment.Consignment = dtl2.Consignment;
+                if (dtl2.Consignment != null)
+                {
+                    salespayment.Consignment = salespayment.Session.GetObjectByKey<Consignment>(dtl2.Consignment.Oid);
+                }
                 salespayment.CashAmount = dtl2.CashAmount;
                 salespayment.CashRefNum = dtl2.CashRefNum;
                 salespayment.CreditCardAcctCode = dtl2.CreditCardAcctCode;
-                salespayment.CardType = dtl2.CardType;
+                if (dtl2.CardType != null)
+                {
+                    salespayment.CardType = salespayment.Session.GetObjectByKey<CardType>(dtl2.CardType.Oid);
+                }
                 salespayment.CreditCardNo = dtl2.CreditCardNo;
                 salespayment.CardHolderName = dtl2.CardHolderName;
-                salespayment.Instalment = dtl2.Instalment;
+                if (dtl2.Instalment != null)
+                {
+                    salespayment.Instalment = salespayment.Session.GetObjectByKey<Instalment>(dtl2.Instalment.Oid);
+                }
                 salespayment.TerminalID = dtl2.TerminalID;
-                salespayment.CardIssuer = dtl2.CardIssuer;
-                salespayment.Merchant = dtl2.Merchant;
+                if (dtl2.CardIssuer != null)
+                {
+                    salespayment.CardIssuer = salespayment.Session.GetObjectByKey<CardIssuer>(dtl2.CardIssuer.Oid);
+                }
+                if (dtl2.Merchant != null)
+                {
+                    salespayment.Merchant = salespayment.Session.GetObjectByKey<CardMachineBank>(dtl2.Merchant.Oid);
+                }
                 salespayment.ApprovalCode = dtl2.ApprovalCode;
                 salespayment.BatchNo = dtl2.BatchNo;
                 salespayment.Transaction = dtl2.Transaction;
                 salespayment.CreditCardAmount = dtl2.CreditCardAmount;
                 salespayment.VoucherAcctCode = dtl2.VoucherAcctCode;
-                salespayment.VoucherType = dtl2.VoucherType;
+                if (dtl2.VoucherType != null)
+                {
+                    salespayment.VoucherType = salespayment.Session.GetObjectByKey<Voucher>(dtl2.VoucherType.Oid);
+                }
                 salespayment.VoucherNo = dtl2.VoucherNo;
-                salespayment.TaxCode = dtl2.TaxCode;
+                if (dtl2.TaxCode != null)
+                {
+                    salespayment.TaxCode = salespayment.Session.GetObjectByKey<vwTax>(dtl2.TaxCode.Code);
+                }
                 salespayment.VoucherAmount = dtl2.VoucherAmount;
                 salespayment.PaymentTotal = dtl2.PaymentTotal;
                 pickexchange.PaymentDetailsBO.Add(salespayment);

@@ -28,14 +28,14 @@ namespace OgawaPortal.Module.BusinessObjects.Logistic
     [Appearance("HideCancel", AppearanceItemType = "Action", TargetItems = "CancelPartialPickList", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideWarehousePartial", AppearanceItemType = "Action", TargetItems = "WarehousePartial", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
-    [Appearance("HideWarehousePartialDT", AppearanceItemType = "Action", TargetItems = "WarehousePartial", Context = "PickListPartialPayment_PLPP_DetailView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    [Appearance("HideWarehousePartialDT", AppearanceItemType = "Action", TargetItems = "WarehousePartial", Context = "PickListPartialPayment_DetailView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
     [Appearance("HideSubmit2", AppearanceItemType = "Action", TargetItems = "SubmitPartialPickList", Criteria = "not (Status in (0))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideCancel2", AppearanceItemType = "Action", TargetItems = "CancelPartialPickList", Criteria = "not (Status in (0))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
     // Delivery Order Partial
-    [Appearance("HideSubmit3", AppearanceItemType = "Action", TargetItems = "SubmitPartialPickList", Context = "PickListPartialPayment_PLPP_DetailView_DOPartial", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
-    [Appearance("HideCancel3", AppearanceItemType = "Action", TargetItems = "CancelPartialPickList", Context = "PickListPartialPayment_PLPP_DetailView_DOPartial", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    [Appearance("HideSubmit3", AppearanceItemType = "Action", TargetItems = "SubmitPartialPickList", Context = "PickListPartialPayment_DetailView_DOPartial", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    [Appearance("HideCancel3", AppearanceItemType = "Action", TargetItems = "CancelPartialPickList", Context = "PickListPartialPayment_DetailView_DOPartial", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
     public class PickListPartialPayment : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).

@@ -42,6 +42,46 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "TransferOut_DetailView")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitTransfer.Active.SetItemValue("Enabled", true);
+                    this.CancelTransfer.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitTransfer.Active.SetItemValue("Enabled", false);
+                    this.CancelTransfer.Active.SetItemValue("Enabled", false);
+                }
+
+                if (((DetailView)View).ViewEditMode == ViewEditMode.Edit)
+                {
+                    this.AddItemTransfer.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.AddItemTransfer.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else if (View.Id == "TransferOut_DetailView_TI")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.ReceiveTransfer.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.ReceiveTransfer.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitTransfer.Active.SetItemValue("Enabled", false);
+                this.CancelTransfer.Active.SetItemValue("Enabled", false);
+                this.AddItemTransfer.Active.SetItemValue("Enabled", false);
+                this.ReceiveTransfer.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {

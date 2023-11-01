@@ -39,6 +39,25 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "DeliveryOrderFull_DetailView")
+            {
+                //this.BackToInquiry.Active.SetItemValue("Enabled", true);
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitFullDO.Active.SetItemValue("Enabled", true);
+                    this.CancelFullDO.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitFullDO.Active.SetItemValue("Enabled", false);
+                    this.CancelFullDO.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitFullDO.Active.SetItemValue("Enabled", false);
+                this.CancelFullDO.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {

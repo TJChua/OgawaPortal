@@ -240,6 +240,30 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
             }
         }
 
+        private string _SeriesNumber;
+        [XafDisplayName("Series Number")]
+        [Index(23), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
+        public string SeriesNumber
+        {
+            get { return _SeriesNumber; }
+            set
+            {
+                SetPropertyValue("SeriesNumber", ref _SeriesNumber, value);
+            }
+        }
+
+        private string _Remarks;
+        [XafDisplayName("Remarks")]
+        [Index(25), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
+        public string Remarks
+        {
+            get { return _Remarks; }
+            set
+            {
+                SetPropertyValue("Remarks", ref _Remarks, value);
+            }
+        }
+
         [Browsable(false)]
         public bool IsNew
         {

@@ -39,6 +39,25 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "DeliveryOrderPartial_DetailView")
+            {
+                //this.BackToInquiry.Active.SetItemValue("Enabled", true);
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitPartialDO.Active.SetItemValue("Enabled", true);
+                    this.CancelPartialDO.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitPartialDO.Active.SetItemValue("Enabled", false);
+                    this.CancelPartialDO.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitPartialDO.Active.SetItemValue("Enabled", false);
+                this.CancelPartialDO.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {

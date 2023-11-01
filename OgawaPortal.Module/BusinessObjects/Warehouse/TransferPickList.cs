@@ -28,7 +28,7 @@ namespace OgawaPortal.Module.BusinessObjects.Warehouse
     [Appearance("HideCancel", AppearanceItemType = "Action", TargetItems = "CancelTransferPickList", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideTransfer", AppearanceItemType = "Action", TargetItems = "TransferOutPickList", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
-    [Appearance("HideTransfer1", AppearanceItemType = "Action", TargetItems = "TransferOutPickList", Context = "PickListTransferOut_DetailView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    [Appearance("HideTransfer1", AppearanceItemType = "Action", TargetItems = "TransferOutPickList", Context = "TransferPickList_DetailView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
     [Appearance("HideNew1", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "TransferPickList_DetailView_TransferOut")]
     [Appearance("HideSubmit1", AppearanceItemType = "Action", TargetItems = "SubmitTransferPickList", Criteria = "not (Status in (0))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]

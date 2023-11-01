@@ -40,6 +40,36 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "PickListTransferOut_DetailView")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitPickListTransferOut.Active.SetItemValue("Enabled", true);
+                    this.CancelPickListTransferOut.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitPickListTransferOut.Active.SetItemValue("Enabled", false);
+                    this.CancelPickListTransferOut.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else if (View.Id == "PickListTransferOut_DetailView_TransferIn")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.TransferInPickList.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.TransferInPickList.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitPickListTransferOut.Active.SetItemValue("Enabled", false);
+                this.CancelPickListTransferOut.Active.SetItemValue("Enabled", false);
+                this.TransferInPickList.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {

@@ -43,6 +43,36 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "PickListPartialPayment_DetailView")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitPartialPickList.Active.SetItemValue("Enabled", true);
+                    this.CancelPartialPickList.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitPartialPickList.Active.SetItemValue("Enabled", false);
+                    this.CancelPartialPickList.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else if (View.Id == "PickListPartialPayment_DetailView_DOPartial")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.WarehousePartial.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.WarehousePartial.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitPartialPickList.Active.SetItemValue("Enabled", false);
+                this.CancelPartialPickList.Active.SetItemValue("Enabled", false);
+                this.WarehousePartial.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {
@@ -153,7 +183,10 @@ namespace OgawaPortal.Module.Controllers
             deliverypartial.DeliveryCountry = selectedObject.DeliveryCountry;
             deliverypartial.DeliveryMobilePhone = selectedObject.DeliveryMobilePhone;
             deliverypartial.DeliveryHomePhone = selectedObject.DeliveryHomePhone;
-            deliverypartial.DeliveryRace = selectedObject.DeliveryRace;
+            if (selectedObject.DeliveryRace != null)
+            {
+                deliverypartial.DeliveryRace = deliverypartial.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
+            }
 
             IObjectSpace fos = Application.CreateObjectSpace();
             PartialPaymentDeliveryReq partialpayment = fos.FindObject<PartialPaymentDeliveryReq>(new BinaryOperator("BaseNum", selectedObject.SalesOrderNo));

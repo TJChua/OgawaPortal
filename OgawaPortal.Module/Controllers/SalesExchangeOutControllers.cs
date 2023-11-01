@@ -39,6 +39,24 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "ExchangeOut_DetailView")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitSalesExchangeOut.Active.SetItemValue("Enabled", true);
+                    this.CancelSalesExchangeOut.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitSalesExchangeOut.Active.SetItemValue("Enabled", false);
+                    this.CancelSalesExchangeOut.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitSalesExchangeOut.Active.SetItemValue("Enabled", false);
+                this.CancelSalesExchangeOut.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {

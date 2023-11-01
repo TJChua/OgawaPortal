@@ -39,6 +39,25 @@ namespace OgawaPortal.Module.Controllers
         {
             base.OnViewControlsCreated();
             // Access and customize the target View control.
+            if (View.Id == "ExchangeDeliveryReq_DetailView")
+            {
+                //this.BackToInquiry.Active.SetItemValue("Enabled", true);
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitExchangeDR.Active.SetItemValue("Enabled", true);
+                    this.CancelExchangeDR.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.SubmitExchangeDR.Active.SetItemValue("Enabled", false);
+                    this.CancelExchangeDR.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else
+            {
+                this.SubmitExchangeDR.Active.SetItemValue("Enabled", false);
+                this.CancelExchangeDR.Active.SetItemValue("Enabled", false);
+            }
         }
         protected override void OnDeactivated()
         {
