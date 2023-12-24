@@ -7,10 +7,34 @@
     <Items>
       <Item Id="Default" Index="0">
         <Items>
+          <Item Id="DeliveryOrderFullDetails_ListView" Removed="True" />
+          <Item Id="DeliveryOrderPartialDetails_ListView" Removed="True" />
+          <Item Id="ExchangeDeliveryReqDetails_ListView" Removed="True" />
+          <Item Id="ExchangeDeliveryReqPayment_ListView" Removed="True" />
+          <Item Id="ExchangeOutDetails_ListView" Removed="True" />
+          <Item Id="ExchangeOutPayment_ListView" Removed="True" />
+          <Item Id="FullPaymentDeliveryReqAttach_ListView" Removed="True" />
+          <Item Id="FullPaymentDeliveryReqDetails_ListView" Removed="True" />
+          <Item Id="FullPaymentDeliveryReqPayment_ListView" Removed="True" />
+          <Item Id="PartialPaymentDeliveryReqAttach_ListView" Removed="True" />
+          <Item Id="PartialPaymentDeliveryReqDetails_ListView" Removed="True" />
+          <Item Id="PartialPaymentDeliveryReqPayment_ListView" Removed="True" />
+          <Item Id="PickListExchangeDetails_ListView" Removed="True" />
+          <Item Id="PickListExchangePayment_ListView" Removed="True" />
+          <Item Id="PickListFullPaymentAttach_ListView" Removed="True" />
+          <Item Id="PickListFullPaymentDetails_ListView" Removed="True" />
+          <Item Id="PickListPartialPaymentAttach_ListView" Removed="True" />
+          <Item Id="PickListPartialPaymentDetails_ListView" Removed="True" />
+          <Item Id="PickListTransferInDetails_ListView" Removed="True" />
+          <Item Id="PickListTransferOutDetails_ListView" Removed="True" />
           <Item Id="POSSalesDetails_ListView" Removed="True" />
           <Item Id="POSSalesPayment_ListView" Removed="True" />
+          <Item Id="PrintGRNDetails_ListView" Removed="True" />
+          <Item Id="PrintGRNPayment_ListView" Removed="True" />
           <Item Id="TransferInDetails_ListView" Removed="True" />
           <Item Id="TransferOutDetails_ListView" Removed="True" />
+          <Item Id="TransferPickListDetails_ListView" Removed="True" />
+          <Item Id="vwPrice_ListView" Removed="True" />
         </Items>
       </Item>
       <Item Id="Maintenance" Index="1" />
@@ -924,12 +948,13 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="ItemCodes_DetailView" AllowEdit="False" />
     <ListView Id="ItemCodes_LookupListView">
       <Columns>
         <ColumnInfo Id="ItemName" SortIndex="-1" SortOrder="None" />
       </Columns>
     </ListView>
-    <DetailView Id="ItemList_DetailView">
+    <DetailView Id="ItemList_DetailView" AllowEdit="True">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="7.9136690647482011">
@@ -942,7 +967,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="ItemList_items_ListView">
+    <ListView Id="ItemList_items_ListView" ShowFindPanel="True">
       <Columns>
         <ColumnInfo Id="Class" Width="82" />
         <ColumnInfo Id="ItemCode" Width="82" />
@@ -2017,7 +2042,11 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="POSSales_DetailsBO_ListView" NewItemRowPosition="Bottom" />
+    <ListView Id="POSSales_DetailsBO_ListView" NewItemRowPosition="Bottom">
+      <Columns>
+        <ColumnInfo Id="ItemName" SortIndex="-1" SortOrder="None" />
+      </Columns>
+    </ListView>
     <DetailView Id="POSSales_DetailView">
       <Items>
         <ActionContainerViewItem Id="AddItem" Caption="AddItem" ActionContainer="ListView" Orientation="Vertical" IsNewNode="True" />
@@ -4143,6 +4172,11 @@
         <ColumnInfo Id="Status" PropertyName="Status" Index="3" IsNewNode="True" />
         <ColumnInfo Id="Reason" PropertyName="Reason" Index="4" IsNewNode="True" />
         <ColumnInfo Id="Remarks" PropertyName="Remarks" Index="5" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="POSSalesDetails_ListView">
+      <Columns>
+        <ColumnInfo Id="ItemName" SortIndex="-1" SortOrder="None" />
       </Columns>
     </ListView>
     <DetailView Id="POSSalesPayment_DetailView">

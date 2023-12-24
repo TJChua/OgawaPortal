@@ -168,6 +168,7 @@
     <Compile Include="BusinessObjects\POS - Transfer\TransferOutDetails.cs" />
     <Compile Include="BusinessObjects\View\vwItemMasters.cs" />
     <Compile Include="BusinessObjects\View\vwOutlets.cs" />
+    <Compile Include="BusinessObjects\View\vwPrice.cs" />
     <Compile Include="BusinessObjects\View\vwSalesRep.cs" />
     <Compile Include="BusinessObjects\View\vwTax.cs" />
     <Compile Include="BusinessObjects\View\vwWarehouse.cs" />

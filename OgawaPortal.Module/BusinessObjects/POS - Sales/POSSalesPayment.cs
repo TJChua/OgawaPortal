@@ -21,9 +21,10 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
     [XafDisplayName("Sales Payment")]
     [Appearance("LinkDoc", AppearanceItemType = "Action", TargetItems = "Link", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("UnlinkDoc", AppearanceItemType = "Action", TargetItems = "Unlink", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
-
+    
     [RuleCriteria("CashSaveValid", DefaultContexts.Save, "IsValid = 0", "Please select Consignment.")]
     [RuleCriteria("VourcherSaveValid", DefaultContexts.Save, "IsValid1 = 0", "Please fill vourcher no. and vourcher type.")]
+    [RuleCriteria("PaymentValid", DefaultContexts.Delete, "IsValid2 = 0", "Not allow to delete payment.")]
     public class POSSalesPayment : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         // Use CodeRush to create XPO classes and properties with a few keystrokes.
@@ -92,6 +93,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private PaymentMethod _PaymentMethod;
         [ImmediatePostData]
         [XafDisplayName("Payment Method")]
+        [Appearance("PaymentMethod", Enabled = false, Criteria = "IsValid2")]
         [Index(0), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         public PaymentMethod PaymentMethod
         {
@@ -129,6 +131,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [ImmediatePostData]
         [XafDisplayName("Cash Account")]
         [Appearance("CashAcctCode", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 0")]
+        [Appearance("CashAcctCode1", Enabled = false, Criteria = "IsValid2")]
         [Index(2), VisibleInListView(false), VisibleInDetailView(false), VisibleInLookupListView(false)]
         public string CashAcctCode
         {
@@ -142,6 +145,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private Consignment _Consignment;
         [XafDisplayName("Consignment")]
         [Appearance("Consignment", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 0")]
+        [Appearance("Consignment1", Enabled = false, Criteria = "IsValid2")]
         [Index(5), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         public Consignment Consignment
         {
@@ -156,6 +160,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [ImmediatePostData]
         [XafDisplayName("Amount")]
         [Appearance("CashAmount", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 0")]
+        [Appearance("CashAmount1", Enabled = false, Criteria = "IsValid2")]
         [Index(8), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         [ModelDefault("DisplayFormat", "n2")]
         [ModelDefault("EditMask", "n2")]
@@ -176,6 +181,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private string _CashRefNum;
         [XafDisplayName("Cash Reference No.")]
         [Appearance("CashRefNum", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 0")]
+        [Appearance("CashRefNum1", Enabled = false, Criteria = "IsValid2")]
         [Index(10), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public string CashRefNum
         {
@@ -190,6 +196,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [ImmediatePostData]
         [XafDisplayName("GL Account")]
         [Appearance("CreditCardAcctCode", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("CreditCardAcctCode1", Enabled = false, Criteria = "IsValid2")]
         [Index(12), VisibleInListView(false), VisibleInDetailView(false), VisibleInLookupListView(false)]
         public string CreditCardAcctCode
         {
@@ -203,6 +210,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private CardType _CardType;
         [XafDisplayName("Card Type")]
         [Appearance("CardType", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("CardType1", Enabled = false, Criteria = "IsValid2")]
         [Index(15), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public CardType CardType
         {
@@ -216,6 +224,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private string _CreditCardNo;
         [XafDisplayName("Credit Card No(Last 6 number)")]
         [Appearance("CreditCardNo", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("CreditCardNo1", Enabled = false, Criteria = "IsValid2")]
         [Index(18), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public string CreditCardNo
         {
@@ -229,6 +238,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private string _CardHolderName;
         [XafDisplayName("Card Holder Name")]
         [Appearance("CardHolderName", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("CardHolderName1", Enabled = false, Criteria = "IsValid2")]
         [Index(20), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public string CardHolderName
         {
@@ -242,6 +252,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private Instalment _Instalment;
         [XafDisplayName("Instalment")]
         [Appearance("Instalment", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("Instalment1", Enabled = false, Criteria = "IsValid2")]
         [Index(22), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public Instalment Instalment
         {
@@ -255,6 +266,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private string _TerminalID;
         [XafDisplayName("Terminal ID")]
         [Appearance("TerminalID", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("TerminalID1", Enabled = false, Criteria = "IsValid2")]
         [Index(25), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public string TerminalID
         {
@@ -268,6 +280,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private CardIssuer _CardIssuer;
         [XafDisplayName("Card Issuer")]
         [Appearance("CardIssuer", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("CardIssuer1", Enabled = false, Criteria = "IsValid2")]
         [Index(28), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public CardIssuer CardIssuer
         {
@@ -281,6 +294,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private CardMachineBank _Merchant;
         [XafDisplayName("Merchant")]
         [Appearance("Merchant", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("Merchant1", Enabled = false, Criteria = "IsValid2")]
         [Index(30), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public CardMachineBank Merchant
         {
@@ -294,6 +308,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private string _ApprovalCode;
         [XafDisplayName("Approval Code")]
         [Appearance("ApprovalCode", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("ApprovalCode1", Enabled = false, Criteria = "IsValid2")]
         [Index(32), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public string ApprovalCode
         {
@@ -307,6 +322,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private string _BatchNo;
         [XafDisplayName("Batch No")]
         [Appearance("BatchNo", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("BatchNo1", Enabled = false, Criteria = "IsValid2")]
         [Index(35), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public string BatchNo
         {
@@ -320,6 +336,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private bool _Transaction;
         [XafDisplayName("Transaction(Online)")]
         [Appearance("Transaction", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("Transaction1", Enabled = false, Criteria = "IsValid2")]
         [Index(38), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public bool Transaction
         {
@@ -334,6 +351,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [ImmediatePostData]
         [XafDisplayName("Amount")]
         [Appearance("CreditCardAmount", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 1")]
+        [Appearance("CreditCardAmount1", Enabled = false, Criteria = "IsValid2")]
         [Index(40), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         [ModelDefault("DisplayFormat", "n2")]
         [ModelDefault("EditMask", "n2")]
@@ -354,6 +372,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private string _VoucherAcctCode;
         [XafDisplayName("GL Account")]
         [Appearance("VoucherAcctCode", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 2")]
+        [Appearance("VoucherAcctCode1", Enabled = false, Criteria = "IsValid2")]
         [Index(42), VisibleInListView(false), VisibleInDetailView(false), VisibleInLookupListView(false)]
         public string VoucherAcctCode
         {
@@ -367,6 +386,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private Voucher _VoucherType;
         [XafDisplayName("Voucher Type")]
         [Appearance("VoucherType", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 2")]
+        [Appearance("VoucherType1", Enabled = false, Criteria = "IsValid2")]
         [Index(45), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public Voucher VoucherType
         {
@@ -380,6 +400,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private string _VoucherNo;
         [XafDisplayName("Voucher No.")]
         [Appearance("VoucherNo", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 2")]
+        [Appearance("VoucherNo1", Enabled = false, Criteria = "IsValid2")]
         [Index(48), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public string VoucherNo
         {
@@ -394,6 +415,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [NoForeignKey]
         [XafDisplayName("Tax Code")]
         [Appearance("TaxCode", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 2")]
+        [Appearance("TaxCode1", Enabled = false, Criteria = "IsValid2")]
         [Index(50), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public vwTax TaxCode
         {
@@ -408,6 +430,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [ImmediatePostData]
         [XafDisplayName("Amount")]
         [Appearance("VoucherAmount", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Criteria = "PaymentMethod != 2")]
+        [Appearance("VoucherAmount1", Enabled = false, Criteria = "IsValid2")]
         [Index(52), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         [ModelDefault("DisplayFormat", "n2")]
         [ModelDefault("EditMask", "n2")]
@@ -475,6 +498,23 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
                 if (this.PaymentMethod == PaymentMethod.Voucher)
                 {
                     if (this.VoucherNo == null || this.VoucherType == null)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        }
+
+        [Browsable(false)]
+        public bool IsValid2
+        {
+            get
+            {
+                if (this.POSSales != null)
+                {
+                    if (this.POSSales.ResumeOrder == true)
                     {
                         return true;
                     }

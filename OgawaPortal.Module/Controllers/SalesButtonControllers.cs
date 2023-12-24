@@ -22,6 +22,7 @@ using OgawaPortal.Module.BusinessObjects.POS___Sales;
 using OgawaPortal.Module.BusinessObjects.View;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -224,6 +225,7 @@ namespace OgawaPortal.Module.Controllers
                 POSSalesDetails newdetails = ObjectSpace.CreateObject<POSSalesDetails>();
                 newdetails.Class = dtl.Class;
                 newdetails.ItemCode = newdetails.Session.GetObjectByKey<vwItemMasters>(dtl.ItemCode);
+                newdetails.ItemFather = dtl.ItemCode;
                 newdetails.UnitPrice = dtl.Price;
                 newdetails.Order = p.Order;
                 newdetails.BackOrder = p.Order;
@@ -231,10 +233,7 @@ namespace OgawaPortal.Module.Controllers
 
                 SqlConnection conn = new SqlConnection(getConnectionString());
 
-                string selectbom = "SELECT T1.Code, T1.Quantity " +
-                        "FROM [OgawaHealthCareLive]..OITT T0 WITH (NOLOCK) " +
-                        "INNER JOIN [OgawaHealthCareLive]..ITT1 T1 WITH (NOLOCK) on T0.Code = T1.Father " +
-                        "WHERE T0.Code = '" + dtl.ItemCode + "'";
+                string selectbom = "EXEC sp_GetBOM '" + dtl.ItemCode + "'";
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
@@ -246,6 +245,7 @@ namespace OgawaPortal.Module.Controllers
                 {
                     POSSalesDetails newbomdetails = ObjectSpace.CreateObject<POSSalesDetails>();
                     newbomdetails.ItemCode = newdetails.Session.GetObjectByKey<vwItemMasters>(reader.GetString(0));
+                    newbomdetails.ItemFather = reader.GetString(1);
                     if (dtl.Class.ToUpper() == "PROMO")
                     {
                         newbomdetails.Class = dtl.Class + "-P";
@@ -255,8 +255,8 @@ namespace OgawaPortal.Module.Controllers
                         newbomdetails.Class = dtl.Class;
                     }
                     newbomdetails.UnitPrice = dtl.Price;
-                    newbomdetails.Order = p.Order * reader.GetDecimal(1);
-                    newbomdetails.BackOrder = p.Order * reader.GetDecimal(1);
+                    newbomdetails.Order = p.Order * reader.GetDecimal(2);
+                    newbomdetails.BackOrder = p.Order * reader.GetDecimal(2);
                     selectedObject.DetailsBO.Add(newbomdetails);
                 }
             }

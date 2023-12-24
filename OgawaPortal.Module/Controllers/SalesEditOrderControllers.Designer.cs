@@ -35,7 +35,7 @@
             // 
             this.SalesEditOrder.AcceptButtonCaption = null;
             this.SalesEditOrder.CancelButtonCaption = null;
-            this.SalesEditOrder.Caption = "Edit and Cancel";
+            this.SalesEditOrder.Caption = "Edit and Create New";
             this.SalesEditOrder.Category = "ObjectsCreation";
             this.SalesEditOrder.ConfirmationMessage = null;
             this.SalesEditOrder.Id = "SalesEditOrder";

@@ -37,10 +37,11 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
     [Appearance("HideLogisticPartial", AppearanceItemType = "Action", TargetItems = "LogisticPartialPayment", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideLogisticExchange", AppearanceItemType = "Action", TargetItems = "LogisticExchange", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
-    [Appearance("HideAddItemSales1", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "not (Status in (0))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
+    [Appearance("HideAddItemSales1", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "not (Status in (0)) or IsValid = 1", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
     [Appearance("HideSalesSubmit1", AppearanceItemType = "Action", TargetItems = "SubmitOrder", Criteria = "not (Status in (0))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideSalesCancel1", AppearanceItemType = "Action", TargetItems = "CancelOrder", Criteria = "not (Status in (0))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideSalesClose1", AppearanceItemType = "Action", TargetItems = "CloseOrder", Criteria = "not (Status in (1))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    [Appearance("HideSalesEdit1", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Criteria = "not (Status in (0))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
 
     [Appearance("HideSalesGoodsReturnDT", AppearanceItemType = "Action", TargetItems = "SalesGoodsReturn", Context = "POSSales_DetailView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideSalesExchangeOutDT", AppearanceItemType = "Action", TargetItems = "SalesExchangeOut", Context = "POSSales_DetailView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
@@ -106,6 +107,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
     [Appearance("HideSalesCancel4", AppearanceItemType = "Action", TargetItems = "CancelOrder", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideSalesClose4", AppearanceItemType = "Action", TargetItems = "CloseOrder", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideSalesSave4", AppearanceItemType = "Action", TargetItems = "Save", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    [Appearance("HideEdit4", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "POSSales_DetailView_EditOrder")]
 
     [Appearance("HideSalesGoodsReturn4", AppearanceItemType = "Action", TargetItems = "SalesGoodsReturn", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideSalesExchangeOut4", AppearanceItemType = "Action", TargetItems = "SalesExchangeOut", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
@@ -635,6 +637,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private string _IdentityNo;
         [XafDisplayName("Identity No/D.O.B")]
         [RuleRequiredField(DefaultContexts.Save)]
+        [ImmediatePostData]
         [Index(32), VisibleInListView(false), VisibleInDetailView(true), VisibleInLookupListView(false)]
         [Appearance("IdentityNo", Enabled = false, Context = "POSSales_DetailView_GRN")]
         [Appearance("IdentityNo1", Enabled = false, Criteria = "not (Status in (0, 3))")]
@@ -815,6 +818,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private string _BillIdentityNo;
         [XafDisplayName("Identity No/D.O.B")]
         [RuleRequiredField(DefaultContexts.Save)]
+        [ImmediatePostData]
         [Index(62), VisibleInListView(false), VisibleInDetailView(true), VisibleInLookupListView(false)]
         [Appearance("BillIdentityNo", Enabled = false, Context = "POSSales_DetailView_GRN")]
         [Appearance("BillIdentityNo1", Enabled = false, Criteria = "not (Status in (0, 3))")]
@@ -996,9 +1000,11 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         // Sales Rep
         private vwSalesRep _SalesRep1;
         [NoForeignKey]
+        [ImmediatePostData]
         [DataSourceCriteria("Active = 'Y'")]
         [XafDisplayName("Sales Rep 1")]
         [RuleRequiredField(DefaultContexts.Save)]
+        [LookupEditorMode(LookupEditorMode.AllItems)]
         [Index(93), VisibleInListView(false), VisibleInDetailView(true), VisibleInLookupListView(false)]
         [Appearance("SalesRep1", Enabled = false, Context = "POSSales_DetailView_GRN")]
         [Appearance("SalesRep11", Enabled = false, Criteria = "not (Status in (0, 3))")]
@@ -1015,6 +1021,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [NoForeignKey]
         [DataSourceCriteria("Active = 'Y'")]
         [XafDisplayName("Sales Rep 2")]
+        [LookupEditorMode(LookupEditorMode.AllItems)]
         [Index(94), VisibleInListView(false), VisibleInDetailView(true), VisibleInLookupListView(false)]
         [Appearance("SalesRep2", Enabled = false, Context = "POSSales_DetailView_GRN")]
         [Appearance("SalesRep21", Enabled = false, Criteria = "not (Status in (0, 3))")]
@@ -1031,6 +1038,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [NoForeignKey]
         [DataSourceCriteria("Active = 'Y'")]
         [XafDisplayName("Sales Rep 3")]
+        [LookupEditorMode(LookupEditorMode.AllItems)]
         [Index(95), VisibleInListView(false), VisibleInDetailView(true), VisibleInLookupListView(false)]
         [Appearance("SalesRep3", Enabled = false, Context = "POSSales_DetailView_GRN")]
         [Appearance("SalesRep31", Enabled = false, Criteria = "not (Status in (0, 3))")]
@@ -1047,6 +1055,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [NoForeignKey]
         [DataSourceCriteria("Active = 'Y'")]
         [XafDisplayName("Sales Rep 4")]
+        [LookupEditorMode(LookupEditorMode.AllItems)]
         [Index(96), VisibleInListView(false), VisibleInDetailView(true), VisibleInLookupListView(false)]
         [Appearance("SalesRep4", Enabled = false, Context = "POSSales_DetailView_GRN")]
         [Appearance("SalesRep41", Enabled = false, Criteria = "not (Status in (0, 3))")]
@@ -1370,6 +1379,19 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
             }
         }
 
+        private bool _ResumeOrder;
+        [Appearance("ResumeOrder", Enabled = false)]
+        [Index(701), VisibleInListView(false), VisibleInDetailView(false), VisibleInLookupListView(false)]
+        [XafDisplayName("ResumeOrder")]
+        public bool ResumeOrder
+        {
+            get { return _ResumeOrder; }
+            set
+            {
+                SetPropertyValue("ResumeOrder", ref _ResumeOrder, value);
+            }
+        }
+
         [Browsable(false)]
         public bool IsNew
         {
@@ -1377,10 +1399,29 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
             { return Session.IsNewObject(this); }
         }
 
+        [Browsable(false)]
+        public bool IsValid
+        {
+            get
+            {
+                if (this.Name == null || this.Address1 == null || this.City == null || this.District == District.blank ||
+                    this.PostCode == null || Country == CountryList.blank || this.MobilePhone == null || this.IdentityNo == null || this.Race == null ||
+                    this.BillName == null || this.BillAddress1 == null || this .BillCity == null || this.BillDistrict == District.blank || 
+                    this.BillPostCode == null || this.BillCountry == CountryList.blank || this.BillMobilePhone == null || this.BillIdentityNo == null || 
+                    this.BillRace == null || this. DeliveryContact == null || this.DeliveryAddress1 == null || this.DeliveryCountry == CountryList.blank || 
+                    this.DeliveryMobilePhone == null || this.DeliveryRace == null || this.SalesRep1 == null)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
         [Association("POSSales-DetailsBO")]
         [XafDisplayName("Items")]
         [Appearance("DetailsBO", Enabled = false, Context = "POSSales_DetailView_GRN")]
-        [Appearance("DetailsBO1", Enabled = false, Criteria = "not (Status in (0, 3))")]
+        [Appearance("DetailsBO1", Enabled = false, Criteria = "not (Status in (0, 3)) and not ResumeOrder")]
         public XPCollection<POSSalesDetails> DetailsBO
         {
             get { return GetCollection<POSSalesDetails>("DetailsBO"); }
@@ -1389,7 +1430,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [Association("POSSales-PaymentDetailsBO")]
         [XafDisplayName("Payment")]
         [Appearance("PaymentDetailsBO", Enabled = false, Context = "POSSales_DetailView_GRN")]
-        [Appearance("PaymentDetailsBO1", Enabled = false, Criteria = "not (Status in (0, 3))")]
+        [Appearance("PaymentDetailsBO1", Enabled = false, Criteria = "not (Status in (0, 3)) and not ResumeOrder")]
         public XPCollection<POSSalesPayment> PaymentDetailsBO
         {
             get { return GetCollection<POSSalesPayment>("PaymentDetailsBO"); }

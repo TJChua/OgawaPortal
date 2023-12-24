@@ -96,6 +96,8 @@ namespace OgawaPortal.Module.Controllers
             IObjectSpace os = Application.CreateObjectSpace();
             POSSales trx = os.FindObject<POSSales>(new BinaryOperator("Oid", selectedObject.Oid));
 
+            trx.ResumeOrder = true;
+
             openNewView(os, trx, ViewEditMode.Edit);
             showMsg("Successful", "Resume Sales Order.", InformationType.Success);
 

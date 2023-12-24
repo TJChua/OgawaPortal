@@ -63,9 +63,14 @@ namespace OgawaPortal.Module.Web.Controllers
 
                     if (so != null)
                     {
-                        if (CurrObject.EditAndCancel == true)
+                        //if (CurrObject.EditAndCancel == true)
+                        //{
+                        //    so.Status = Status.Cancel;
+                        //}
+
+                        if (CurrObject.ResumeOrder == true)
                         {
-                            so.Status = Status.Cancel;
+                            so.ResumeOrder = false;
                         }
                     }
 

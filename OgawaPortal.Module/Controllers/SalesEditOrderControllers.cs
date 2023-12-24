@@ -39,7 +39,7 @@ namespace OgawaPortal.Module.Controllers
         protected override void OnViewControlsCreated()
         {
             base.OnViewControlsCreated();
-            if (View.Id == "POSSales_DetailView")
+            if (View.Id == "POSSales_DetailView_EditOrder")
             {
                 //this.BackToInquiry.Active.SetItemValue("Enabled", true);
                 if (((DetailView)View).ViewEditMode == ViewEditMode.View)
@@ -255,7 +255,7 @@ namespace OgawaPortal.Module.Controllers
             }
 
             ShowViewParameters svp = new ShowViewParameters();
-            DetailView dv = Application.CreateDetailView(os, resumeorder);
+            DetailView dv = Application.CreateDetailView(os, "POSSales_DetailView", true, resumeorder);
             dv.ViewEditMode = ViewEditMode.Edit;
             dv.IsRoot = true;
             svp.CreatedView = dv;

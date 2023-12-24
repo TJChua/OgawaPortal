@@ -21,6 +21,10 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
     [Appearance("HideNew", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
     [Appearance("LinkDoc", AppearanceItemType = "Action", TargetItems = "Link", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("UnlinkDoc", AppearanceItemType = "Action", TargetItems = "Unlink", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+
+    [RuleCriteria("ItemsValid", DefaultContexts.Delete, "IsValid = 0", "Not allow to delete items.")]
+    [RuleCriteria("BOMValid", DefaultContexts.Delete, "IsValid1 = 0", "Not allow to delete child item.")]
+
     public class POSSalesDetails : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         // Use CodeRush to create XPO classes and properties with a few keystrokes.
@@ -102,7 +106,8 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         private vwItemMasters _ItemCode;
         [NoForeignKey]
         [XafDisplayName("Item Code")]
-        [Index(5), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
+        [Appearance("ItemCode", Enabled = false, Criteria = "IsValid")]
+        [Index(3), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         public vwItemMasters ItemCode
         {
             get { return _ItemCode; }
@@ -122,8 +127,22 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
             }
         }
 
+        private string _ItemFather;
+        [XafDisplayName("Item Father")]
+        [Appearance("ItemFather", Enabled = false)]
+        [Index(4), VisibleInListView(false), VisibleInDetailView(false), VisibleInLookupListView(false)]
+        public string ItemFather
+        {
+            get { return _ItemFather; }
+            set
+            {
+                SetPropertyValue("ItemFather", ref _ItemFather, value);
+            }
+        }
+
         private string _ItemName;
         [XafDisplayName("Item Name")]
+        [Appearance("ItemName", Enabled = false)]
         [Index(5), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         public string ItemName
         {
@@ -139,6 +158,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [DbType("numeric(19,6)")]
         [ModelDefault("DisplayFormat", "n2")]
         [ModelDefault("EditMask", "n2")]
+        [Appearance("RevisedSellingPrice", Enabled = false, Criteria = "IsValid")]
         [Index(8), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         [XafDisplayName("Revised Selling Price")]
         public decimal RevisedSellingPrice
@@ -155,6 +175,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [DbType("numeric(19,6)")]
         [ModelDefault("DisplayFormat", "n2")]
         [ModelDefault("EditMask", "n2")]
+        [Appearance("UnitPrice", Enabled = false, Criteria = "IsValid")]
         [Index(10), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         [XafDisplayName("Unit Price")]
         public decimal UnitPrice
@@ -175,6 +196,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [Index(12), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         [ModelDefault("DisplayFormat", "n2")]
         [ModelDefault("EditMask", "n2")]
+        [Appearance("Order", Enabled = false, Criteria = "IsValid")]
         [XafDisplayName("Order")]
         public decimal Order
         {
@@ -213,6 +235,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         [Index(18), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         [ModelDefault("DisplayFormat", "n2")]
         [ModelDefault("EditMask", "n2")]
+        [Appearance("BackOrder", Enabled = false, Criteria = "IsValid")]
         [XafDisplayName("Back Order")]
         public decimal BackOrder
         {
@@ -242,6 +265,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
 
         private string _SeriesNumber;
         [XafDisplayName("Series Number")]
+        [Appearance("SeriesNumber", Enabled = false, Criteria = "IsValid")]
         [Index(23), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         public string SeriesNumber
         {
@@ -254,6 +278,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
 
         private string _Remarks;
         [XafDisplayName("Remarks")]
+        [Appearance("Remarks", Enabled = false, Criteria = "IsValid")]
         [Index(25), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         public string Remarks
         {
@@ -269,6 +294,37 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
         {
             get
             { return Session.IsNewObject(this); }
+        }
+
+        [Browsable(false)]
+        public bool IsValid
+        {
+            get
+            {
+                if (this.POSSales != null)
+                {
+                    if (this.POSSales.ResumeOrder == true)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        }
+
+        [Browsable(false)]
+        public bool IsValid1
+        {
+            get
+            {
+                if (this.ItemCode.ItemCode != this.ItemFather)
+                {
+                    return true;
+                }
+
+                return false;
+            }
         }
 
         private POSSales _POSSales;
@@ -297,6 +353,12 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
 
                 }
             }
+        }
+
+        protected override void OnDeleting()
+        {
+            base.OnDeleting();
+
         }
     }
 }
