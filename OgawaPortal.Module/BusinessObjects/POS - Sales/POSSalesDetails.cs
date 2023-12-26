@@ -11,6 +11,9 @@ using OgawaPortal.Module.BusinessObjects.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -21,9 +24,10 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
     [Appearance("HideNew", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
     [Appearance("LinkDoc", AppearanceItemType = "Action", TargetItems = "Link", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("UnlinkDoc", AppearanceItemType = "Action", TargetItems = "Unlink", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    [Appearance("HideDelete", AppearanceItemType.Action, "True", TargetItems = "Delete", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
 
     [RuleCriteria("ItemsValid", DefaultContexts.Delete, "IsValid = 0", "Not allow to delete items.")]
-    [RuleCriteria("BOMValid", DefaultContexts.Delete, "IsValid1 = 0", "Not allow to delete child item.")]
+    //[RuleCriteria("BOMValid", DefaultContexts.Delete, "IsValid1 = 0", "Not allow to delete child item.")]
 
     public class POSSalesDetails : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
@@ -289,6 +293,19 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
             }
         }
 
+        private string _FatherKey;
+        [XafDisplayName("FatherKey")]
+        [Appearance("FatherKey", Enabled = false)]
+        [Index(80), VisibleInListView(false), VisibleInDetailView(false), VisibleInLookupListView(false)]
+        public string FatherKey
+        {
+            get { return _FatherKey; }
+            set
+            {
+                SetPropertyValue("FatherKey", ref _FatherKey, value);
+            }
+        }
+
         [Browsable(false)]
         public bool IsNew
         {
@@ -313,19 +330,19 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
             }
         }
 
-        [Browsable(false)]
-        public bool IsValid1
-        {
-            get
-            {
-                if (this.ItemCode.ItemCode != this.ItemFather)
-                {
-                    return true;
-                }
+        //[Browsable(false)]
+        //public bool IsValid1
+        //{
+        //    get
+        //    {
+        //        if (this.ItemCode.ItemCode != this.ItemFather)
+        //        {
+        //            return true;
+        //        }
 
-                return false;
-            }
-        }
+        //        return false;
+        //    }
+        //}
 
         private POSSales _POSSales;
         [Association("POSSales-DetailsBO")]
@@ -353,12 +370,6 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
 
                 }
             }
-        }
-
-        protected override void OnDeleting()
-        {
-            base.OnDeleting();
-
         }
     }
 }

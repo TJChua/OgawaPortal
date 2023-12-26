@@ -276,6 +276,12 @@
     <Compile Include="Controllers\SalesButtonControllers.Designer.cs">
       <DependentUpon>SalesButtonControllers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\SalesDetailControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\SalesDetailControllers.Designer.cs">
+      <DependentUpon>SalesDetailControllers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\SalesEditOrderControllers.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -362,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controllers\SalesButtonControllers.resx">
       <DependentUpon>SalesButtonControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\SalesDetailControllers.resx">
+      <DependentUpon>SalesDetailControllers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controllers\SalesEditOrderControllers.resx">
       <DependentUpon>SalesEditOrderControllers.cs</DependentUpon>

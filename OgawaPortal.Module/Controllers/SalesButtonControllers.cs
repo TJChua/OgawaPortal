@@ -229,6 +229,8 @@ namespace OgawaPortal.Module.Controllers
                 newdetails.UnitPrice = dtl.Price;
                 newdetails.Order = p.Order;
                 newdetails.BackOrder = p.Order;
+                newdetails.FatherKey = Guid.NewGuid().ToString();
+                string fatherkey = newdetails.FatherKey;
                 selectedObject.DetailsBO.Add(newdetails);
 
                 SqlConnection conn = new SqlConnection(getConnectionString());
@@ -248,7 +250,7 @@ namespace OgawaPortal.Module.Controllers
                     newbomdetails.ItemFather = reader.GetString(1);
                     if (dtl.Class.ToUpper() == "PROMO")
                     {
-                        newbomdetails.Class = dtl.Class + "-P";
+                        newbomdetails.Class = reader.GetString(6) + "-P";
                     }
                     else
                     {
@@ -257,8 +259,10 @@ namespace OgawaPortal.Module.Controllers
                     newbomdetails.UnitPrice = dtl.Price;
                     newbomdetails.Order = p.Order * reader.GetDecimal(2);
                     newbomdetails.BackOrder = p.Order * reader.GetDecimal(2);
+                    newbomdetails.FatherKey = fatherkey;
                     selectedObject.DetailsBO.Add(newbomdetails);
                 }
+                conn.Close();
             }
 
             ObjectSpace.CommitChanges();
