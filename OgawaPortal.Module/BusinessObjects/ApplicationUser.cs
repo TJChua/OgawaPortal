@@ -39,6 +39,7 @@ namespace OgawaPortal.Module.BusinessObjects {
         [RuleRequiredField(DefaultContexts.Save)]
         [NoForeignKey]
         [DataSourceCriteria("GroupCode = '114'")]
+        [LookupEditorMode(LookupEditorMode.AllItems)]
         [VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         public vwOutlets Outlet
         {

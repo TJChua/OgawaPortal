@@ -147,6 +147,7 @@
     <Compile Include="BusinessObjects\Maintenances\Transporter.cs" />
     <Compile Include="BusinessObjects\Maintenances\Voucher.cs" />
     <Compile Include="BusinessObjects\Nonpersistent\AddItem.cs" />
+    <Compile Include="BusinessObjects\Nonpersistent\ChangeOutlet.cs" />
     <Compile Include="BusinessObjects\Nonpersistent\Confirmation.cs" />
     <Compile Include="BusinessObjects\POS - Logistic\ExchangeDeliveryReq.cs" />
     <Compile Include="BusinessObjects\POS - Logistic\ExchangeDeliveryReqDetails.cs" />
@@ -182,6 +183,12 @@
     <Compile Include="BusinessObjects\Warehouse\PickListTransferOutDetails.cs" />
     <Compile Include="BusinessObjects\Warehouse\TransferPickList.cs" />
     <Compile Include="BusinessObjects\Warehouse\TransferPickListDetails.cs" />
+    <Compile Include="Controllers\ChangeOutletControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ChangeOutletControllers.Designer.cs">
+      <DependentUpon>ChangeOutletControllers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\DeliveryOrderFullControllers.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -330,6 +337,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controllers\ChangeOutletControllers.resx">
+      <DependentUpon>ChangeOutletControllers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controllers\DeliveryOrderFullControllers.resx">
       <DependentUpon>DeliveryOrderFullControllers.cs</DependentUpon>
     </EmbeddedResource>

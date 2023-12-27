@@ -7,6 +7,7 @@
     <Items>
       <Item Id="Default" Index="0">
         <Items>
+          <Item Id="Change Outlet" Caption="Change Outlet" ViewId="ChangeOutlet_ListView" IsNewNode="True" />
           <Item Id="DeliveryOrderFullDetails_ListView" Removed="True" />
           <Item Id="DeliveryOrderPartialDetails_ListView" Removed="True" />
           <Item Id="ExchangeDeliveryReqDetails_ListView" Removed="True" />
@@ -141,6 +142,21 @@
   </SchemaModules>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <DetailView Id="ChangeOutlet_DetailView">
+      <Items>
+        <ActionContainerViewItem Id="ChangeOutlet" ActionContainer="ListView" Caption="ChangeOutlet" Orientation="Vertical" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ChangeOutlet" Direction="Horizontal" RelativeSize="100" Caption="Outlet">
+              <LayoutItem Id="Outlet" RelativeSize="75.322812051649933" />
+              <LayoutItem Id="ChangeOutlet" ViewItem="ChangeOutlet" Index="1" RelativeSize="24.67718794835007" IsNewNode="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="DeliveryOrderFull_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">

@@ -9,7 +9,10 @@ using DevExpress.ExpressApp.Templates;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
+using OgawaPortal.Module.BusinessObjects;
 using OgawaPortal.Module.BusinessObjects.Maintenances;
+using OgawaPortal.Module.BusinessObjects.Nonpersistent;
+using OgawaPortal.Module.BusinessObjects.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +74,29 @@ namespace OgawaPortal.Module.Controllers
                 GSTDates GSTDates = objectSpace.FindObject<GSTDates>(new BinaryOperator("Oid", 1));
                 DetailView detailView = Application.CreateDetailView(objectSpace, GSTDates);
                 detailView.ViewEditMode = DevExpress.ExpressApp.Editors.ViewEditMode.Edit;
+                e.ActionArguments.ShowViewParameters.CreatedView = detailView;
+
+                e.Handled = true;
+            }
+
+            if (e.ActionArguments.SelectedChoiceActionItem.Id == "Change Outlet")
+            {
+                IObjectSpace objectSpace = Application.CreateObjectSpace();
+                ChangeOutlet changeoutlet = objectSpace.CreateObject<ChangeOutlet>();
+
+                ApplicationUser user = (ApplicationUser)SecuritySystem.CurrentUser;
+                IObjectSpace os = Application.CreateObjectSpace();
+                ApplicationUser upduser = os.FindObject<ApplicationUser>(new BinaryOperator("Oid", user.Oid));
+
+                DetailView detailView = Application.CreateDetailView(objectSpace, changeoutlet);
+                detailView.ViewEditMode = DevExpress.ExpressApp.Editors.ViewEditMode.Edit;
+
+                if (upduser.Outlet != null)
+                {
+                    ((ChangeOutlet)detailView.CurrentObject).Outlet = ((ChangeOutlet)detailView.CurrentObject).Session.GetObjectByKey<vwOutlets>
+                        (upduser.Outlet.CardCode);
+                }
+
                 e.ActionArguments.ShowViewParameters.CreatedView = detailView;
 
                 e.Handled = true;

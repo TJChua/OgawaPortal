@@ -41,6 +41,10 @@ background-blend-mode: screen;">
         {
             font-weight:bold !important;
         }
+        .dxtv-nd
+        {
+            font-weight:bold !important;
+        }
  /*       Navigation*/
         .dxnbLite_XafTheme .dxnb-content
         {
