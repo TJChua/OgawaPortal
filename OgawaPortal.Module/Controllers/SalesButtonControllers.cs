@@ -218,6 +218,13 @@ namespace OgawaPortal.Module.Controllers
             POSSales selectedObject = (POSSales)e.CurrentObject;
             DetailView detailView = (DetailView)e.PopupWindowView;
             ItemList p = (ItemList)e.PopupWindow.View.CurrentObject;
+
+            if (p.Order < 0)
+            {
+                showMsg("Error", "No allow negative quantity.", InformationType.Error);
+                return;
+            }
+
             ListPropertyEditor listPropertyEditor = detailView.FindItem("items") as ListPropertyEditor;
 
             foreach (ItemCodes dtl in listPropertyEditor.ListView.SelectedObjects)
@@ -265,9 +272,16 @@ namespace OgawaPortal.Module.Controllers
                 conn.Close();
             }
 
-            ObjectSpace.CommitChanges();
-            ObjectSpace.Refresh();
-            View.Refresh();
+            try
+            {
+                ObjectSpace.CommitChanges();
+                ObjectSpace.Refresh();
+                View.Refresh();
+            }
+            catch (Exception ex)
+            {
+                View.Refresh();
+            }
         }
 
         private void AddItem_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e)

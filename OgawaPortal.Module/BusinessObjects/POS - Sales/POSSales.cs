@@ -37,7 +37,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
     [Appearance("HideLogisticPartial", AppearanceItemType = "Action", TargetItems = "LogisticPartialPayment", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideLogisticExchange", AppearanceItemType = "Action", TargetItems = "LogisticExchange", Context = "ListView", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
 
-    [Appearance("HideAddItemSales1", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "not (Status in (0)) or IsValid = 1", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
+    [Appearance("HideAddItemSales1", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "not (Status in (0))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
     [Appearance("HideSalesSubmit1", AppearanceItemType = "Action", TargetItems = "SubmitOrder", Criteria = "not (Status in (0))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideSalesCancel1", AppearanceItemType = "Action", TargetItems = "CancelOrder", Criteria = "not (Status in (0))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideSalesClose1", AppearanceItemType = "Action", TargetItems = "CloseOrder", Criteria = "not (Status in (1))", Context = "Any", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
@@ -106,7 +106,7 @@ namespace OgawaPortal.Module.BusinessObjects.POS___Sales
     [Appearance("HideSalesSubmit4", AppearanceItemType = "Action", TargetItems = "SubmitOrder", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideSalesCancel4", AppearanceItemType = "Action", TargetItems = "CancelOrder", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideSalesClose4", AppearanceItemType = "Action", TargetItems = "CloseOrder", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
-    [Appearance("HideSalesSave4", AppearanceItemType = "Action", TargetItems = "Save", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
+    //[Appearance("HideSalesSave4", AppearanceItemType = "Action", TargetItems = "Save", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
     [Appearance("HideEdit4", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "POSSales_DetailView_EditOrder")]
 
     [Appearance("HideSalesGoodsReturn4", AppearanceItemType = "Action", TargetItems = "SalesGoodsReturn", Context = "POSSales_DetailView_EditOrder", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]

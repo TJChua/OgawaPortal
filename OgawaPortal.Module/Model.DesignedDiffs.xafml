@@ -2063,9 +2063,33 @@
         <ColumnInfo Id="ItemName" SortIndex="-1" SortOrder="None" />
       </Columns>
     </ListView>
+    <ListView Id="POSSales_DetailsBO_ListView_POS" ClassName="OgawaPortal.Module.BusinessObjects.POS___Sales.POSSalesDetails" DataAccessMode="Client" NewItemRowPosition="Bottom" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="FatherKey" PropertyName="FatherKey" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ItemFather" PropertyName="ItemFather" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="POSSales" PropertyName="POSSales" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Class" PropertyName="Class" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="ItemCode" PropertyName="ItemCode" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="ItemName" PropertyName="ItemName" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="RevisedSellingPrice" PropertyName="RevisedSellingPrice" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="UnitPrice" PropertyName="UnitPrice" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="Order" PropertyName="Order" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="Taken" PropertyName="Taken" Index="6" IsNewNode="True" />
+        <ColumnInfo Id="BackOrder" PropertyName="BackOrder" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="Amount" PropertyName="Amount" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="SeriesNumber" PropertyName="SeriesNumber" Index="9" IsNewNode="True" />
+        <ColumnInfo Id="Remarks" PropertyName="Remarks" Index="10" IsNewNode="True" />
+      </Columns>
+    </ListView>
     <DetailView Id="POSSales_DetailView">
       <Items>
         <ActionContainerViewItem Id="AddItem" Caption="AddItem" ActionContainer="ListView" Orientation="Vertical" IsNewNode="True" />
+        <PropertyEditor Id="DetailsBO" View="POSSales_DetailsBO_ListView_POS" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="73.991031390134523">

@@ -12,6 +12,7 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
 using OgawaPortal.Module.BusinessObjects;
 using OgawaPortal.Module.BusinessObjects.POS___Sales;
+using OgawaPortal.Module.BusinessObjects.View;
 using OgawaPortal.Module.Controllers;
 using System;
 using System.Collections.Generic;
@@ -54,8 +55,6 @@ namespace OgawaPortal.Module.Web.Controllers
             {
                 POSSales CurrObject = (POSSales)args.CurrentObject;
 
-                base.Save(args);
-
                 if (CurrObject.BaseNum != null)
                 {
                     IObjectSpace os = Application.CreateObjectSpace();
@@ -71,6 +70,11 @@ namespace OgawaPortal.Module.Web.Controllers
                         if (CurrObject.ResumeOrder == true)
                         {
                             so.ResumeOrder = false;
+                        }
+
+                        if (so.SalesRep1 != null)
+                        {
+                            CurrObject.SalesRep1 = CurrObject.Session.GetObjectByKey<vwSalesRep>(so.SalesRep1.No);
                         }
                     }
 

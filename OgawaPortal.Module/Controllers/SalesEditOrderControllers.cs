@@ -153,10 +153,10 @@ namespace OgawaPortal.Module.Controllers
                 resumeorder.DeliveryRace = resumeorder.Session.GetObjectByKey<Races>(selectedObject.DeliveryRace.Oid);
             }
 
-            if (selectedObject.SalesRep1 != null)
-            {
-                resumeorder.SalesRep1 = resumeorder.Session.GetObjectByKey<vwSalesRep>(selectedObject.SalesRep1.No);
-            }
+            //if (selectedObject.SalesRep1 != null)
+            //{
+            //    resumeorder.SalesRep1 = resumeorder.Session.GetObjectByKey<vwSalesRep>(selectedObject.SalesRep1.No);
+            //}
 
             if (selectedObject.SalesRep2 != null)
             {

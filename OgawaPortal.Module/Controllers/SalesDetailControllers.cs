@@ -43,7 +43,7 @@ namespace OgawaPortal.Module.Controllers
             // Access and customize the target View control.
             genCon = Frame.GetController<GeneralControllers>();
 
-            if (View.Id == "POSSales_DetailsBO_ListView")
+            if (View.Id == "POSSales_DetailsBO_ListView_POS")
             {
                 this.DeleteDetailItem.Active.SetItemValue("Enabled", true);
             }
@@ -83,7 +83,66 @@ namespace OgawaPortal.Module.Controllers
 
         private void DeleteDetailItem_Execute(object sender, PopupWindowShowActionExecuteEventArgs e)
         {
+            try
+            {
+                ObjectSpace.CommitChanges();
+                ObjectSpace.Refresh();
+            }
+            catch (Exception ex)
+            {
+                showMsg("Error", "Please save the document first before delete item.", InformationType.Error);
+                return;
+            }
+
             if (e.SelectedObjects.Count > 1)
+            {
+                foreach (POSSalesDetails dtl in e.SelectedObjects)
+                {
+                    if (dtl.POSSales != null)
+                    {
+                        if (dtl.POSSales.Status != Status.Draft)
+                        {
+                            showMsg("Error", "Not allow delete item, SO already submit/cancel.", InformationType.Error);
+                            return;
+                        }
+                    }
+
+                    if (dtl.POSSales != null)
+                    {
+                        if (dtl.ItemCode.ItemCode == dtl.ItemFather)
+                        {
+                            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
+
+                            string selectbom = "EXEC sp_DeleteBOM '" + dtl.ItemCode.ItemCode + "', " + dtl.POSSales.Oid + ", '" + dtl.FatherKey + "'";
+                            if (conn.State == ConnectionState.Open)
+                            {
+                                conn.Close();
+                            }
+                            conn.Open();
+                            SqlCommand cmd = new SqlCommand(selectbom, conn);
+                            SqlDataReader reader = cmd.ExecuteReader();
+                            conn.Close();
+                        }
+                    }
+                    else
+                    {
+                        showMsg("Error", "Please save the document before proceed delete action.", InformationType.Error);
+                        return;
+                    }
+                }
+
+                try
+                {
+                    ObjectSpace.CommitChanges();
+                    ObjectSpace.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    showMsg("Error", "Please save the document first before delete item.", InformationType.Error);
+                    return;
+                }
+            }
+            else if (e.SelectedObjects.Count == 1)
             {
                 foreach (POSSalesDetails dtl in e.SelectedObjects)
                 {
@@ -114,7 +173,9 @@ namespace OgawaPortal.Module.Controllers
                         }
                         else
                         {
-                            showMsg("Warning", "Child item not allow to delete.", InformationType.Warning);
+                            {
+                                showMsg("Error", "Child item not allow to delete.", InformationType.Error);
+                            }
                         }
                     }
                     else
@@ -129,7 +190,7 @@ namespace OgawaPortal.Module.Controllers
             }
             else
             {
-                showMsg("Warning", "No Item selected.", InformationType.Warning);
+                showMsg("Warning", "No item selected.", InformationType.Warning);
             }
         }
 
